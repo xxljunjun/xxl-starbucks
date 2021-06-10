@@ -58,8 +58,5 @@ export default new VueRouter({
 	]
 })
 
-# 四、完成功能滚动条、滑入放大、tab切换功能,轮播图功能，scrollIntoView功能
-
-
-# 五、集成element-UI
+# 四、集成element-UI
 + npm i element-ui -S
