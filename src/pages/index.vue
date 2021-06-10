@@ -1,5 +1,7 @@
 <template>
-  <div>1111111111111</div>
+  <div>{{
+  $store.state.status
+  }}</div>
 </template>
 
 <script>
