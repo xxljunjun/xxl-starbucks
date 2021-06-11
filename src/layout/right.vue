@@ -10,7 +10,6 @@ export default {}
 
 <style lang="scss" scoped>
 .right {
-  background: green;
-  width: 100%;
+  width: 1330px;
 }
 </style>

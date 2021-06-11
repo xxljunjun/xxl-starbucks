@@ -9,7 +9,8 @@ export default {}
 <style lang="scss" scoped>
 .left {
   background: red;
-  width: 40%;
+  width: 100%;
   height: 100%;
+  overflow:hidden;
 }
 </style>
