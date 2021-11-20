@@ -40,8 +40,8 @@ import Aside from './aside.vue'
     }
     .xxl_main{
         margin-left: 450px;
-         height: 1000px;
          flex: 1;
+         overflow-x: hidden;
     }
 }
 </style>

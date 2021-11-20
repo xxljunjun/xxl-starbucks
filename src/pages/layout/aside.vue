@@ -84,6 +84,10 @@ export default {
     },
     refresh(){
         console.log('刷新页面')
+        this.$router.go(0)
+        // this.$router.push({
+        //   path:'/home'
+        // })
     }
   },
 };
@@ -164,6 +168,7 @@ export default {
       font-weight: 600;
       font-size: 20px;
       margin-bottom: 10px;
+      cursor: pointer;
     }
     .menulist_top {
       border-bottom: 1px solid #ccc;
@@ -186,6 +191,7 @@ export default {
       .last_item{
           padding: 0  5px;
           border-right: 1px solid #ccc;
+          color: #979595;
           &:last-child{
               border-right:none;
           }

@@ -6,10 +6,50 @@
         <img :src="item.path" alt="" />
       </div>
     </div>
-     <div class="txt_box">
-       <div class="txt_box_left">11111111</div>
-       <div class="txt_box_right">22222222</div>
-     </div>
+    <div class="txt_box">
+      <div class="txt_box_left">
+        <div class="title">星享俱乐部</div>
+        <div class="txt">
+          开启您的星享之旅，星星越多、会员等级越高、好礼越丰富。<span
+            class="more"
+            >{{ "了解更多>" }}</span
+          >
+        </div>
+        <div class="btn_box">
+          <span class="register btn">注册</span>
+          <span class="login btn">登录</span>
+        </div>
+      </div>
+      <div class="txt_box_right"></div>
+    </div>
+    <div class="car">
+      <h2 class="title">星巴克精选</h2>
+      <p class="txt">在星巴克天猫旗舰店发现更多咖啡心意</p>
+      <div class="car_large">
+        <div class="care_box" v-for="(item, index) in box_Arr" :key="index">
+          <img :src="item.path" alt="" class="top_img" />
+          <p>{{ item.title }}</p>
+          <p>{{ item.txt }}</p>
+          <p>{{ "了解更多>" }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="buttom_box">
+      <h2 class="title">1912 派克街 | 咖啡星讲堂</h2>
+      <p class="txt_1">了解更多星巴克咖啡文化</p>
+      <div class="swiper">
+        <div class="swiper_box" v-for="(item, index) in last_Arr" :key="index">
+          <img :src="item.path" alt="" class="top_img" />
+          <span class="title_1">{{item.title }}</span>
+          <span class="txt">{{item.txt }}</span>
+        </div>
+      </div>
+      <p class="hui_box">
+        <img src="@/static/home/banner.jpg" alt="" class="hui" />
+        <a>沪公网安备 31010402000253号</a>
+        <a>沪ICP备17003747号</a>
+      </p>
+    </div>
   </div>
 </template>
 
@@ -22,6 +62,70 @@ export default {
         { id: 2, path: require("@/static/home/banner_2.jpg") },
         { id: 3, path: require("@/static/home/banner_3.jpg") },
       ],
+      box_Arr: [
+        {
+          id: 1,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "会员星礼包",
+          txt: "用一份心礼，让心意相随",
+        },
+        {
+          id: 2,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "会员星礼包",
+          txt: "用一份心礼，让心意相随",
+        },
+        {
+          id: 3,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "会员星礼包",
+          txt: "用一份心礼，让心意相随",
+        },
+        {
+          id: 4,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "会员星礼包",
+          txt: "用一份心礼，让心意相随",
+        },
+      ],
+      last_Arr:[
+        {
+          id: 1,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "咖啡的起源与培植",
+          txt: "咖啡知识",
+        },
+        {
+          id: 2,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "咖啡的起源与培植",
+          txt: "咖啡知识",
+        },
+        {
+          id: 3,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "咖啡的起源与培植",
+          txt: "咖啡知识",
+        },
+        {
+          id: 4,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "咖啡的起源与培植",
+          txt: "咖啡知识",
+        },
+        {
+          id: 5,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "咖啡的起源与培植",
+          txt: "咖啡知识",
+        },
+        {
+          id: 6,
+          path: require("@/static/home/banner_1.jpg"),
+          title: "咖啡的起源与培植",
+          txt: "咖啡知识",
+        },
+      ]
     };
   },
   methods: {},
@@ -31,6 +135,8 @@ export default {
 <style lang="scss" scoped>
 .home {
   color: #000;
+  width: 100%;
+  margin-bottom: 20px;
   .banner {
     width: 100%;
     height: 100%;
@@ -46,24 +152,169 @@ export default {
       width: 30%;
       display: flex;
       align-items: center;
-      img{
+      img {
         width: 100%;
         // border: 1px solid #ccc;
         box-shadow: 1px 1px 4px #ccc;
         cursor: pointer;
-        &:hover{
+        &:hover {
           box-shadow: 1px 1px 5px #ccc;
-          transition: .3s;
-          transform: translate(0,-3px);
+          transition: 0.3s;
+          transform: translate(0, -3px);
         }
       }
     }
   }
-  .txt_box{
+  .txt_box {
     height: 250px;
     width: 100%;
     display: flex;
-    background: red;
+    .txt_box_left {
+      margin-left: 200px;
+      width: 340px;
+      .title {
+        margin: 25px 0 20px 0;
+        color: #000;
+        font-weight: 600;
+        font-size: 22px;
+      }
+      .txt {
+        margin-bottom: 20px;
+        font-size: 18px;
+        line-height: 36px;
+        color: rgba(0, 0, 0, 0.56);
+        .more {
+          color: #c2a661;
+          cursor: pointer;
+        }
+      }
+      .btn_box {
+        display: flex;
+        .btn {
+          display: inline-block;
+          width: 80px;
+          height: 40px;
+          border-radius: 20px;
+          border: 1px solid #1eb274;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #1eb274;
+          cursor: pointer;
+        }
+        .register {
+          margin-right: 10px;
+        }
+        .login {
+        }
+      }
+    }
+    .txt_box_right {
+    }
+  }
+  .car {
+    height: 350px;
+    width: 100%;
+    background: #eee;
+    .title {
+      margin: 0 0 20px 0;
+      padding-top: 30px;
+      text-align: center;
+      font-weight: 500;
+    }
+    .txt {
+      margin-bottom: 60px;
+      text-align: center;
+    }
+    .car_large {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .care_box {
+        width: 140px;
+        height: 160px;
+        background: #fff;
+        border: 1px solid #ccc;
+        margin-right: 20px;
+        p {
+          text-align: center;
+          margin-bottom: 12px;
+        }
+        .top_img {
+          width: 70px;
+          height: 45px;
+          position: relative;
+          top: -20px;
+          left: 40px;
+        }
+      }
+    }
+  }
+  .buttom_box {
+    height: 360px;
+    width: 100%;
+     overflow: hidden;
+    .swiper {
+      height: 180px;
+      width: 100%;
+      display: flex;
+     
+      .top_img{
+        width: 240px;
+        height: 140px;
+      }
+      .swiper_box {
+        height: 180px;
+        width: 240px;
+        background: #fff;
+        margin-right: 20px;
+        box-shadow: 1px 1px 4px #ccc;
+        position: relative;
+        &:first-child{
+          margin-left: 20px;
+        }
+        .txt{
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          display: inline-block;
+          height: 30px;
+          width: 70px;
+          background: #C2A661;
+          color: #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .title_1{
+          display: inline-block;
+          margin-left: 10px;
+          margin-top: 5px;
+        }
+      }
+    }
+    .hui_box {
+      margin: 20px 0 0 0;
+      .hui {
+        height: 20px;
+        width: 20px;
+        margin-right: 8px;
+      }
+    }
+
+    p {
+      text-align: center;
+    }
+    .title {
+      margin: 0 0 20px 0;
+      padding-top: 30px;
+      text-align: center;
+      font-weight: 500;
+    }
+    .txt_1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
   }
 }
 </style>
