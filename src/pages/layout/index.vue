@@ -30,18 +30,18 @@ import Aside from './aside.vue'
 .xxl_layout{
     color: #000;
      height: 100%;
+     display: flex;
     .xxl_aside{
         position: fixed;
-        background: red;
         width: 450px;
         float: left;
         height: 100%;
-        overflow: hidden;
+        // overflow: hidden;
     }
     .xxl_main{
-        background: green;
         margin-left: 450px;
          height: 1000px;
+         flex: 1;
     }
 }
 </style>
