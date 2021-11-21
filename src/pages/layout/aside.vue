@@ -1,11 +1,16 @@
 <template>
-  <div class="aside_box" :class="{xiaoshi:!status}">
+  <div class="aside_box" :class="{ xiaoshi: tabBarStatus == 1 }">
     <div class="tab_Bar">
       <div>
-        <img src="@/assets/logo.png" alt="" class="logo" @click="refresh"/>
+        <img src="@/assets/logo.png" alt="" class="logo" @click="refresh" />
       </div>
-      <ul class="box" v-if="status">
-        <li class="item" v-for="(item, index) in tabBarArr" :key="index">
+      <ul class="box" v-if="tabBarStatus !== 1">
+        <li
+          class="item"
+          v-for="(item, index) in tabBarArr"
+          :key="index"
+          @click="clickTab(item)"
+        >
           {{ item.txt }}
         </li>
       </ul>
@@ -13,47 +18,59 @@
         <img src="@/assets/logo.png" alt="" class="menu" @click="showMume" />
       </div>
     </div>
-    <div class="content" v-if="status">
+    <!--很多种情况-->
+    <div class="content" v-if="tabBarStatus !== 1">
       <div class="content_top">
         <div class="txt">心情惬意，来杯咖啡吧</div>
         <img src="@/assets/logo.png" alt="" class="coffe" />
       </div>
       <div class="content_buttom">
         <img src="@/assets/logo.png" alt="" class="man" />
-        <span class="login btn">登录</span>
-        <span class="register btn">注册</span>
+        <span class="login btn" @click="goToLogin">登录</span>
+        <span class="register btn" @click="goToRegister">注册</span>
       </div>
     </div>
-    <div class="menulist" v-else>
+    <!--菜单栏的显示-->
+    <div class="menulist" v-if="tabBarStatus == 1">
       <div class="menulist_top">
-        <p v-for="(item, index) in list_1" :key="index" class="list_item">
+        <p
+          v-for="(item, index) in list_1"
+          :key="index"
+          class="list_item"
+          @click="goToPage_1(item)"
+        >
           {{ item.txt }}
         </p>
       </div>
       <div class="menulist_middle">
-        <p v-for="(item, index) in list_2" :key="index" class="list_item">
+        <p
+          v-for="(item, index) in list_2"
+          :key="index"
+          class="list_item"
+          @click="goToPage_2(item)"
+        >
           {{ item.txt }}
         </p>
       </div>
       <div class="menulist_buttom content_buttom">
         <img src="@/assets/logo.png" alt="" class="man" />
-        <span class="login btn">登录</span>
-        <span class="register btn">注册</span>
+        <span class="login btn" @click="goToLogin">登录</span>
+        <span class="register btn" @click="goToRegister">注册</span>
       </div>
       <div class="last">
-          <div class="last_item">English</div>
-          <div  class="last_item">隐私政策</div>
-          <div  class="last_item">使用条款</div>
+        <div class="last_item">English</div>
+        <div class="last_item">隐私政策</div>
+        <div class="last_item">使用条款</div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   data() {
     return {
-      status: true,
       tabBarArr: [
         { id: 1, txt: "门店" },
         { id: 2, txt: "我的账户" },
@@ -77,18 +94,76 @@ export default {
       ],
     };
   },
+  computed: {
+    ...mapState(["tabBarStatus"]),
+  },
   methods: {
+    changeStatusTrue() {
+      this.$store.commit("toChangeTabBarStatus", 1);
+    },
+    changeStatusFalse() {
+      this.$store.commit("toChangeTabBarStatus", 2);
+    },
     showMume() {
       console.log("显示");
-      this.status = !this.status;
+      if (this.tabBarStatus == 1) {
+        this.changeStatusFalse();
+      } else {
+        this.changeStatusTrue();
+      }
     },
-    refresh(){
-        console.log('刷新页面')
-        this.$router.go(0)
-        // this.$router.push({
-        //   path:'/home'
-        // })
-    }
+    refresh() {
+      console.log("刷新页面");
+      // this.$router.go(0);
+      this.changeStatusFalse();
+      this.$router.push("/home");
+    },
+    goToRegister() {
+      console.log("去注册");
+      this.$router.push("/register");
+      this.changeStatusFalse();
+    },
+    goToLogin() {
+      console.log("去登录");
+      this.$router.push("/login");
+      this.changeStatusFalse();
+    },
+    clickTab(item) {
+      switch (item.id) {
+        case 1:
+          break;
+        case 2:
+          this.$router.push("/login");
+          break;
+        case 3:
+          break;
+        default:
+          break;
+      }
+    },
+    goToPage_1(item) {
+      this.changeStatusFalse();
+      switch (item.id) {
+        case 1:
+          break;
+        case 2:
+          this.$router.push("/club");
+          break;
+        case 3:
+          break;
+      }
+    },
+    goToPage_2(item) {
+      this.changeStatusFalse();
+      switch (item.id) {
+        case 1:
+          break;
+        case 2:
+          break;
+        case 3:
+          break;
+      }
+    },
   },
 };
 </script>
@@ -102,8 +177,8 @@ export default {
   padding-top: 30px;
   box-sizing: border-box;
   box-shadow: 1px 1px 5px #ccc;
-  &.xiaoshi{
-      overflow: auto;
+  &.xiaoshi {
+    overflow: auto;
   }
   .tab_Bar {
     // margin-top: 30px;
@@ -116,6 +191,7 @@ export default {
     .box {
       display: flex;
       align-items: center;
+      margin-left: -60px;
       .item {
         list-style: none;
         margin-right: 30px;
@@ -149,7 +225,7 @@ export default {
       align-items: center;
       margin-bottom: 30px;
       .txt {
-        font-size: 30px;
+        font-size: 26px;
         font-weight: 600;
       }
       .coffe {
@@ -157,7 +233,6 @@ export default {
         width: 30px;
       }
     }
-    
   }
   .menulist {
     padding-left: 100px;
@@ -176,55 +251,55 @@ export default {
     }
     .menulist_middle {
       border-bottom: 1px solid #ccc;
-       margin-top: 10px;
+      margin-top: 10px;
     }
     .menulist_buttom {
-        margin-top: 20px;
-        margin-bottom: 40px;
+      margin-top: 20px;
+      margin-bottom: 40px;
     }
   }
-  .last{
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      margin-bottom: 20px;
-      .last_item{
-          padding: 0  5px;
-          border-right: 1px solid #ccc;
-          color: #979595;
-          &:last-child{
-              border-right:none;
-          }
+  .last {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    .last_item {
+      padding: 0 5px;
+      border-right: 1px solid #ccc;
+      color: #979595;
+      &:last-child {
+        border-right: none;
       }
+    }
   }
 }
 .content_buttom {
-      display: flex;
-      align-items: center;
-      .man {
-        width: 35px;
-        height: 20px;
-        margin-right: 5px;
-        cursor: pointer;
-      }
-      .btn {
-        display: inline-block;
-        color: #1eb274;
-        font-size: 20px;
-      }
-      .login {
-        margin-right: 30px;
-        cursor: pointer;
-      }
-      .register {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 70px;
-        height: 40px;
-        border: 1px solid #1eb274;
-        border-radius: 20px;
-        cursor: pointer;
-      }
-    }
+  display: flex;
+  align-items: center;
+  .man {
+    width: 35px;
+    height: 20px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  .btn {
+    display: inline-block;
+    color: #1eb274;
+    font-size: 18px;
+  }
+  .login {
+    margin-right: 30px;
+    cursor: pointer;
+  }
+  .register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 30px;
+    border: 1px solid #1eb274;
+    border-radius: 20px;
+    cursor: pointer;
+  }
+}
 </style>

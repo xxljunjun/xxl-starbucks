@@ -5,25 +5,25 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
 	state: {
 		// state是存储中心，所有需要被共享或缓存的数据，都在这里定义
-		status: true,
-		token: "7758258",
+		tabBarStatus:2,//1是菜单显示
 	},
 	getters: {
 		// getters相当于组件的计算属性，它与state相关，当它所关系的state变量发生变化时，会自动重新计算
 	},
 	mutations: {
 		// mutations是Vuex中专门用于更新state,同步任务
-		toChaneStatus(state, pyylod) {
+		toChangeTabBarStatus(state,payload){
 			console.log(state)
-			console.log(pyylod)
+			console.log(payload)
+			this.state.tabBarStatus = payload
 		}
 	},
 	actions: {
-		toChang(store, payload) {
-			console.log(store)
-			console.log(payload)
-			store.commit("toChaneStatus", payload)
-		}
+		// toChang(store, payload) {
+		// 	console.log(store)
+		// 	console.log(payload)
+		// 	store.commit("toChaneStatus", payload)
+		// }
 		// actions是专门与后端api打交道的，异步任务;提交的是 mutation，而不是直接变更状态;可以包含任意异步操作。
 	},
 	modules: {

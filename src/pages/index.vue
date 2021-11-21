@@ -16,8 +16,8 @@
           >
         </div>
         <div class="btn_box">
-          <span class="register btn">注册</span>
-          <span class="login btn">登录</span>
+          <span class="register btn" @click="goToRegister">注册</span>
+          <span class="login btn" @click="goToLogin">登录</span>
         </div>
       </div>
       <div class="txt_box_right"></div>
@@ -40,8 +40,8 @@
       <div class="swiper">
         <div class="swiper_box" v-for="(item, index) in last_Arr" :key="index">
           <img :src="item.path" alt="" class="top_img" />
-          <span class="title_1">{{item.title }}</span>
-          <span class="txt">{{item.txt }}</span>
+          <span class="title_1">{{ item.title }}</span>
+          <span class="txt">{{ item.txt }}</span>
         </div>
       </div>
       <p class="hui_box">
@@ -88,7 +88,7 @@ export default {
           txt: "用一份心礼，让心意相随",
         },
       ],
-      last_Arr:[
+      last_Arr: [
         {
           id: 1,
           path: require("@/static/home/banner_1.jpg"),
@@ -125,10 +125,21 @@ export default {
           title: "咖啡的起源与培植",
           txt: "咖啡知识",
         },
-      ]
+      ],
     };
   },
-  methods: {},
+  methods: {
+    goToRegister() {
+      console.log("去注册");
+      this.$router.push("/register");
+      this.$store.commit("toChangeTabBarStatus", 2);
+    },
+    goToLogin() {
+      console.log("去登录");
+      this.$router.push("/login");
+      this.$store.commit("toChangeTabBarStatus", 2);
+    },
+  },
 };
 </script>
 
@@ -253,13 +264,13 @@ export default {
   .buttom_box {
     height: 360px;
     width: 100%;
-     overflow: hidden;
+    overflow: hidden;
     .swiper {
       height: 180px;
       width: 100%;
       display: flex;
-     
-      .top_img{
+
+      .top_img {
         width: 240px;
         height: 140px;
       }
@@ -270,23 +281,23 @@ export default {
         margin-right: 20px;
         box-shadow: 1px 1px 4px #ccc;
         position: relative;
-        &:first-child{
+        &:first-child {
           margin-left: 20px;
         }
-        .txt{
+        .txt {
           position: absolute;
           top: 10px;
           left: 10px;
           display: inline-block;
           height: 30px;
           width: 70px;
-          background: #C2A661;
+          background: #c2a661;
           color: #fff;
           display: flex;
           align-items: center;
           justify-content: center;
         }
-        .title_1{
+        .title_1 {
           display: inline-block;
           margin-left: 10px;
           margin-top: 5px;
