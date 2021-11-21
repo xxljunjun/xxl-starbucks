@@ -12,12 +12,21 @@ const Login =()=>import("@/pages/login/login.vue")
 //菜单模块
 const Menu = ()=>import('@/pages/menu/menu.vue')
 
+const App = ()=>import('@/pages/app/app.vue')
+
+const Map =()=>import('@/pages/map/map.vue')
+
+const Prize =()=>import('@/pages/prize/prize.vue')
+
 const routes = [
 	{ path: '/home', component: Home },
 	{ path: '/login', component: Login },
 	{ path: '/register', component: Register },
 	{ path: '/club', component: Club },
 	{ path: '/menu', component: Menu },
+	{ path: '/app', component: App },
+	{ path: '/map', component: Map },
+	{ path: '/prize', component: Prize },
 ]
 
 export default new VueRouter({

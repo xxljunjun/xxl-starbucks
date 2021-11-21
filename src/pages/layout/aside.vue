@@ -15,19 +15,20 @@
         </li>
       </ul>
       <div>
-        <img src="@/assets/close.png" alt="" class="menu_1" @click="showMume" v-if="tabBarStatus ==1"/>
-        <img src="@/assets/svg/icon-hamburger.svg" alt="" class="menu" @click="showMume" v-else/>
-      </div>
-    </div>
-    <!--很多种情况-->
-    <div class="content" v-if="tabBarStatus !== 1">
-      <div class="content_top">
-        <div class="txt">心情惬意，来杯咖啡吧 ☕</div>
-      </div>
-      <div class="content_buttom">
-        <img src="@/assets/svg/icon-account.svg" alt="" class="man" />
-        <span class="login btn" @click="goToLogin">登录</span>
-        <span class="register btn" @click="goToRegister">注册</span>
+        <img
+          src="@/assets/close.png"
+          alt=""
+          class="menu_1"
+          @click="showMume"
+          v-if="tabBarStatus == 1"
+        />
+        <img
+          src="@/assets/svg/icon-hamburger.svg"
+          alt=""
+          class="menu"
+          @click="showMume"
+          v-else
+        />
       </div>
     </div>
     <!--菜单栏的显示-->
@@ -63,14 +64,100 @@
         <div class="last_item">使用条款</div>
       </div>
     </div>
+    <div class="content" v-if="tabBarStatus == 2">
+      <div class="content_top">
+        <div class="txt">心情惬意，来杯咖啡吧 ☕</div>
+      </div>
+      <div class="content_buttom">
+        <img src="@/assets/svg/icon-account.svg" alt="" class="man" />
+        <span class="login btn" @click="goToLogin">登录</span>
+        <span class="register btn" @click="goToRegister">注册</span>
+      </div>
+    </div>
+    <div class="content_3" v-if="tabBarStatus == 3">
+      <div class="content_3_title">菜单</div>
+      <div
+        v-for="(item, index) in menuArr"
+        :key="index"
+        class="content_3_item"
+        :class="{ ischeck: item.istrue }"
+      >
+        {{ item.txt }}
+      </div>
+    </div>
+    <div class="content_4" v-if="tabBarStatus == 4">
+      <div class="content_4_title">登录或创建一个新帐户 🌟</div>
+      <div
+        v-for="(item, index) in countArr"
+        :key="index"
+        class="content_4_item"
+        :class="{ ischeck: item.istrue }"
+      >
+        {{ item.txt }}
+      </div>
+    </div>
+    <div class="content_5" v-if="tabBarStatus == 5">
+      <div class="content_5_title">星巴克移动应用</div>
+      <div
+        v-for="(item, index) in appArr"
+        :key="index"
+        class="content_5_item"
+        :class="{ ischeck: item.istrue }"
+      >
+        {{ item.txt }}
+      </div>
+    </div>
+    <div class="content_6" v-if="tabBarStatus == 6">地图查找</div>
+    <div class="content_7" v-if="tabBarStatus == 7">
+      <div class="content_7_title">星礼卡</div>
+      <div
+        v-for="(item, index) in prizeArr"
+        :key="index"
+        class="content_7_item"
+        :class="{ ischeck: item.istrue }"
+      >
+        {{ item.txt }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+/*
+  tabBarStatus是vuex的全局变量
+    1==>菜单栏的显示
+    2==>登录注册
+    3==>菜单列表
+    4==>club俱乐部
+    5==>移动app
+    6==>门店
+    7==>礼卡
+*/
 import { mapState } from "vuex";
 export default {
   data() {
     return {
+      prizeArr:[
+        { id: 1, txt: "关于星礼卡", istrue: true },
+        { id: 2, txt: "管理星礼卡", istrue: false },
+        { id: 3, txt: "发票处理进度查询", istrue: false },
+      ],
+      appArr: [
+        { id: 1, txt: "星巴克移动应用", istrue: true },
+        { id: 2, txt: "星巴克 Apple Watch", istrue: false },
+      ],
+      countArr: [
+        { id: 1, txt: "登录", istrue: true },
+        { id: 2, txt: "注册", istrue: false },
+        { id: 3, txt: "关于星享俱乐部", istrue: false },
+      ],
+      menuArr: [
+        { id: 1, txt: "全部", istrue: true },
+        { id: 2, txt: "饮料", istrue: false },
+        { id: 3, txt: "美食", istrue: false },
+        { id: 4, txt: "咖啡产品", istrue: false },
+        { id: 5, txt: "商品", istrue: false },
+      ],
       tabBarArr: [
         { id: 1, txt: "门店" },
         { id: 2, txt: "我的账户" },
@@ -121,22 +208,26 @@ export default {
     goToRegister() {
       console.log("去注册");
       this.$router.push("/register");
-      this.changeStatusFalse();
+      this.$store.commit("toChangeTabBarStatus", 4);
     },
     goToLogin() {
       console.log("去登录");
       this.$router.push("/login");
-      this.changeStatusFalse();
+      this.$store.commit("toChangeTabBarStatus", 4);
     },
     clickTab(item) {
       switch (item.id) {
         case 1:
+          this.$router.push("/map");
+          this.$store.commit("toChangeTabBarStatus", 6);
           break;
         case 2:
           this.$router.push("/login");
+          this.$store.commit("toChangeTabBarStatus", 4);
           break;
         case 3:
           this.$router.push("/menu");
+          this.$store.commit("toChangeTabBarStatus", 3); //菜单tabBar显示
           break;
         default:
           break;
@@ -146,11 +237,16 @@ export default {
       this.changeStatusFalse();
       switch (item.id) {
         case 1:
+          this.$router.push("/map");
+          this.$store.commit("toChangeTabBarStatus", 6);
           break;
         case 2:
           this.$router.push("/club");
+          this.$store.commit("toChangeTabBarStatus", 4);
           break;
         case 3:
+          this.$router.push("/menu");
+          this.$store.commit("toChangeTabBarStatus", 3);
           break;
       }
     },
@@ -158,8 +254,12 @@ export default {
       this.changeStatusFalse();
       switch (item.id) {
         case 1:
+          this.$router.push("/app");
+          this.$store.commit("toChangeTabBarStatus", 5);
           break;
         case 2:
+           this.$router.push("/prize");
+          this.$store.commit("toChangeTabBarStatus", 7);
           break;
         case 3:
           break;
@@ -213,8 +313,8 @@ export default {
       // align-self: flex-end;
       cursor: pointer;
     }
-    .menu_1{
-       height: 20px;
+    .menu_1 {
+      height: 20px;
       width: 20px;
       margin-right: 30px;
       // align-self: flex-end;
@@ -235,6 +335,98 @@ export default {
       .txt {
         font-size: 26px;
         font-weight: 600;
+      }
+    }
+  }
+  .content_3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_3_title {
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .content_3_item {
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+      color: #979595;
+      cursor: pointer;
+      &.ischeck {
+        border-bottom: 3px solid #1eb274;
+        color: #000;
+      }
+    }
+  }
+  .content_4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_4_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+    .content_4_item {
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+      color: #666666;
+      cursor: pointer;
+      &.ischeck {
+        border-bottom: 3px solid #1eb274;
+        color: #000;
+      }
+    }
+  }
+  .content_5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_5_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+    .content_5_item {
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+      color: #666666;
+      cursor: pointer;
+      &.ischeck {
+        border-bottom: 3px solid #1eb274;
+        color: #000;
+      }
+    }
+  }
+  .content_7 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_7_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+    .content_7_item {
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+      color: #666666;
+      cursor: pointer;
+      &.ischeck {
+        border-bottom: 3px solid #1eb274;
+        color: #000;
       }
     }
   }
@@ -271,7 +463,7 @@ export default {
       padding: 0 5px;
       border-right: 1px solid #ccc;
       cursor: pointer;
-      color: #979595;
+      color: #666666;
       &:last-child {
         border-right: none;
       }

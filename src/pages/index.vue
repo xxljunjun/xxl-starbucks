@@ -125,16 +125,16 @@ export default {
     goToRegister() {
       console.log("去注册");
       this.$router.push("/register");
-      this.$store.commit("toChangeTabBarStatus", 2);
+      this.$store.commit("toChangeTabBarStatus", 4);
     },
     goToLogin() {
       console.log("去登录");
       this.$router.push("/login");
-      this.$store.commit("toChangeTabBarStatus", 2);
+      this.$store.commit("toChangeTabBarStatus", 4);
     },
     goToClub(){
        this.$router.push("/club");
-       this.$store.commit("toChangeTabBarStatus", 2);
+       this.$store.commit("toChangeTabBarStatus", 4);
     }
   },
 };
