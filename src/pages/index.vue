@@ -1,8 +1,8 @@
 <template>
   <div class="home">
-    <img src="@/static/home/banner.jpg" alt="" class="banner" />
+    <img src="@/static/home/banner.jpg" alt="" class="banner" @click="goToClub"/>
     <div class="box">
-      <div class="img_box" v-for="(item, index) in imgArr" :key="index">
+      <div class="img_box" v-for="(item, index) in imgArr" :key="index" @click="goToOtherPage(item)">
         <img :src="item.path" alt="" />
       </div>
     </div>
@@ -12,6 +12,7 @@
         <div class="txt">
           开启您的星享之旅，星星越多、会员等级越高、好礼越丰富。<span
             class="more"
+             @click="goToClub"
             >{{ "了解更多>" }}</span
           >
         </div>
@@ -26,11 +27,11 @@
       <h2 class="title">星巴克精选</h2>
       <p class="txt">在星巴克天猫旗舰店发现更多咖啡心意</p>
       <div class="car_large">
-        <div class="care_box" v-for="(item, index) in box_Arr" :key="index">
+        <div class="care_box" v-for="(item, index) in box_Arr" :key="index" @click="goToOtherPage(item)">
           <img :src="item.path" alt="" class="top_img" />
-          <p>{{ item.title }}</p>
+          <p class="box_title">{{ item.title }}</p>
           <p>{{ item.txt }}</p>
-          <p>{{ "了解更多>" }}</p>
+          <p class='more'>{{ "了解更多>" }}</p>
         </div>
       </div>
     </div>
@@ -38,14 +39,14 @@
       <h2 class="title">1912 派克街 | 咖啡星讲堂</h2>
       <p class="txt_1">了解更多星巴克咖啡文化</p>
       <div class="swiper">
-        <div class="swiper_box" v-for="(item, index) in last_Arr" :key="index">
+        <div class="swiper_box" v-for="(item, index) in last_Arr" :key="index" @click="goToOtherPage(item)">
           <img :src="item.path" alt="" class="top_img" />
           <span class="title_1">{{ item.title }}</span>
           <span class="txt">{{ item.txt }}</span>
         </div>
       </div>
       <p class="hui_box">
-        <img src="@/static/home/banner.jpg" alt="" class="hui" />
+        <img src="@/static/home/icpicon.png" alt="" class="hui" />
         <a>沪公网安备 31010402000253号</a>
         <a>沪ICP备17003747号</a>
       </p>
@@ -65,25 +66,25 @@ export default {
       box_Arr: [
         {
           id: 1,
-          path: require("@/static/home/banner_1.jpg"),
+          path: require("@/static/home/top_1.png"),
           title: "会员星礼包",
           txt: "用一份心礼，让心意相随",
         },
         {
           id: 2,
-          path: require("@/static/home/banner_1.jpg"),
+          path: require("@/static/home/top_2.png"),
           title: "会员星礼包",
           txt: "用一份心礼，让心意相随",
         },
         {
           id: 3,
-          path: require("@/static/home/banner_1.jpg"),
+          path: require("@/static/home/top_3.png"),
           title: "会员星礼包",
           txt: "用一份心礼，让心意相随",
         },
         {
           id: 4,
-          path: require("@/static/home/banner_1.jpg"),
+          path: require("@/static/home/top_4.png"),
           title: "会员星礼包",
           txt: "用一份心礼，让心意相随",
         },
@@ -98,37 +99,29 @@ export default {
         {
           id: 2,
           path: require("@/static/home/banner_1.jpg"),
-          title: "咖啡的起源与培植",
-          txt: "咖啡知识",
+          title: "咖啡调制",
+          txt: "咖啡品鉴",
         },
         {
           id: 3,
           path: require("@/static/home/banner_1.jpg"),
-          title: "咖啡的起源与培植",
+          title: "手冲咖啡",
           txt: "咖啡知识",
         },
         {
           id: 4,
           path: require("@/static/home/banner_1.jpg"),
           title: "咖啡的起源与培植",
-          txt: "咖啡知识",
-        },
-        {
-          id: 5,
-          path: require("@/static/home/banner_1.jpg"),
-          title: "咖啡的起源与培植",
-          txt: "咖啡知识",
-        },
-        {
-          id: 6,
-          path: require("@/static/home/banner_1.jpg"),
-          title: "咖啡的起源与培植",
-          txt: "咖啡知识",
+          txt: "咖啡品鉴",
         },
       ],
     };
   },
   methods: {
+    goToOtherPage(item){
+      console.log(item)
+      window.open('http://localhost:8080/home')
+    },
     goToRegister() {
       console.log("去注册");
       this.$router.push("/register");
@@ -139,6 +132,10 @@ export default {
       this.$router.push("/login");
       this.$store.commit("toChangeTabBarStatus", 2);
     },
+    goToClub(){
+       this.$router.push("/club");
+       this.$store.commit("toChangeTabBarStatus", 2);
+    }
   },
 };
 </script>
@@ -152,6 +149,7 @@ export default {
     width: 100%;
     height: 100%;
     display: block;
+    cursor: pointer;
   }
   .box {
     display: flex;
@@ -191,7 +189,7 @@ export default {
       }
       .txt {
         margin-bottom: 20px;
-        font-size: 18px;
+        font-size: 16px;
         line-height: 36px;
         color: rgba(0, 0, 0, 0.56);
         .more {
@@ -247,16 +245,32 @@ export default {
         background: #fff;
         border: 1px solid #ccc;
         margin-right: 20px;
+        cursor: pointer;
+        position: relative;
+        box-sizing: border-box;
+        padding: 50px 20px 0 20px;
+         &:hover {
+          box-shadow: 1px 1px 5px #ccc;
+          transition: 0.3s;
+          transform: translate(0, -3px);
+        }
+        .more{
+          color: #c2a661;
+        }
+        .box_title{
+          font-weight: 600;
+        }
         p {
           text-align: center;
-          margin-bottom: 12px;
+          margin-bottom: 6px;
+          font-size: 14px;
         }
         .top_img {
-          width: 70px;
-          height: 45px;
-          position: relative;
-          top: -20px;
-          left: 40px;
+          width: 100px;
+          height: 70px;
+          position: absolute;
+          top: -30px;
+          left: 20px;
         }
       }
     }
@@ -281,6 +295,7 @@ export default {
         margin-right: 20px;
         box-shadow: 1px 1px 4px #ccc;
         position: relative;
+        cursor: pointer;
         &:first-child {
           margin-left: 20px;
         }
@@ -310,6 +325,8 @@ export default {
         height: 20px;
         width: 20px;
         margin-right: 8px;
+        position: relative;
+        top: 5px;
       }
     }
 

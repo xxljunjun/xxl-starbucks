@@ -9,11 +9,15 @@ const Register =()=>import("@/pages/login/register.vue")
 const Club =()=>import("@/pages/login/club.vue")
 const Login =()=>import("@/pages/login/login.vue")
 
+//菜单模块
+const Menu = ()=>import('@/pages/menu/menu.vue')
+
 const routes = [
 	{ path: '/home', component: Home },
 	{ path: '/login', component: Login },
 	{ path: '/register', component: Register },
 	{ path: '/club', component: Club },
+	{ path: '/menu', component: Menu },
 ]
 
 export default new VueRouter({

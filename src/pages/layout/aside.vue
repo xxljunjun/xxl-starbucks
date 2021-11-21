@@ -2,7 +2,7 @@
   <div class="aside_box" :class="{ xiaoshi: tabBarStatus == 1 }">
     <div class="tab_Bar">
       <div>
-        <img src="@/assets/logo.png" alt="" class="logo" @click="refresh" />
+        <img src="@/assets/svg/logo.svg" alt="" class="logo" @click="refresh" />
       </div>
       <ul class="box" v-if="tabBarStatus !== 1">
         <li
@@ -15,17 +15,17 @@
         </li>
       </ul>
       <div>
-        <img src="@/assets/logo.png" alt="" class="menu" @click="showMume" />
+        <img src="@/assets/close.png" alt="" class="menu_1" @click="showMume" v-if="tabBarStatus ==1"/>
+        <img src="@/assets/svg/icon-hamburger.svg" alt="" class="menu" @click="showMume" v-else/>
       </div>
     </div>
     <!--很多种情况-->
     <div class="content" v-if="tabBarStatus !== 1">
       <div class="content_top">
-        <div class="txt">心情惬意，来杯咖啡吧</div>
-        <img src="@/assets/logo.png" alt="" class="coffe" />
+        <div class="txt">心情惬意，来杯咖啡吧 ☕</div>
       </div>
       <div class="content_buttom">
-        <img src="@/assets/logo.png" alt="" class="man" />
+        <img src="@/assets/svg/icon-account.svg" alt="" class="man" />
         <span class="login btn" @click="goToLogin">登录</span>
         <span class="register btn" @click="goToRegister">注册</span>
       </div>
@@ -53,7 +53,7 @@
         </p>
       </div>
       <div class="menulist_buttom content_buttom">
-        <img src="@/assets/logo.png" alt="" class="man" />
+        <img src="@/assets/svg/icon-account.svg" alt="" class="man" />
         <span class="login btn" @click="goToLogin">登录</span>
         <span class="register btn" @click="goToRegister">注册</span>
       </div>
@@ -136,6 +136,7 @@ export default {
           this.$router.push("/login");
           break;
         case 3:
+          this.$router.push("/menu");
           break;
         default:
           break;
@@ -191,23 +192,30 @@ export default {
     .box {
       display: flex;
       align-items: center;
-      margin-left: -60px;
+      margin-left: -100px;
       .item {
         list-style: none;
-        margin-right: 30px;
+        margin-right: 20px;
         cursor: pointer;
         font-weight: 600;
       }
     }
     .logo {
-      height: 50px;
-      width: 50px;
+      height: 40px;
+      width: 40px;
       margin: 0 30px 0 30px;
       cursor: pointer;
     }
     .menu {
-      height: 20px;
-      width: 25px;
+      height: 24px;
+      width: 24px;
+      margin-right: 30px;
+      // align-self: flex-end;
+      cursor: pointer;
+    }
+    .menu_1{
+       height: 20px;
+      width: 20px;
       margin-right: 30px;
       // align-self: flex-end;
       cursor: pointer;
@@ -227,10 +235,6 @@ export default {
       .txt {
         font-size: 26px;
         font-weight: 600;
-      }
-      .coffe {
-        height: 30px;
-        width: 30px;
       }
     }
   }
@@ -266,6 +270,7 @@ export default {
     .last_item {
       padding: 0 5px;
       border-right: 1px solid #ccc;
+      cursor: pointer;
       color: #979595;
       &:last-child {
         border-right: none;
@@ -277,8 +282,8 @@ export default {
   display: flex;
   align-items: center;
   .man {
-    width: 35px;
-    height: 20px;
+    width: 40px;
+    height: 25px;
     margin-right: 5px;
     cursor: pointer;
   }
