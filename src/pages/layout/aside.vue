@@ -114,13 +114,21 @@
         <img src="@/assets/svg/icon-account.svg" alt="" class="arrow_img" />
       </div>
       <div class="inp_box">
-        <el-input v-model="locationKeyWord" placeholder="输入地址查找门店" class="my_inp"></el-input>
+        <el-input
+          v-model="locationKeyWord"
+          placeholder="输入地址查找门店"
+          class="my_inp"
+        ></el-input>
         <div class="inp_txt">筛选</div>
       </div>
       <div class="local_box">
         <div class="local" v-for="(item, index) in 12" :key="index">
           <div class="left">
-            <img src="@/assets/svg/icon-account.svg" alt="" class="local_left_img" />
+            <img
+              src="@/assets/svg/icon-account.svg"
+              alt=""
+              class="local_left_img"
+            />
           </div>
           <div class="middle">
             <p class="title">深圳华强北贸易店</p>
@@ -128,7 +136,11 @@
             <p>深圳华强北贸易店</p>
           </div>
           <div class="right">
-            <img src="@/assets/svg/icon-account.svg" alt="" class="local_right_img" />
+            <img
+              src="@/assets/svg/icon-account.svg"
+              alt=""
+              class="local_right_img"
+            />
           </div>
         </div>
       </div>
@@ -139,6 +151,37 @@
         v-for="(item, index) in prizeArr"
         :key="index"
         class="content_7_item"
+        :class="{ ischeck: item.istrue }"
+      >
+        {{ item.txt }}
+      </div>
+    </div>
+    <div class="content_8" v-if="tabBarStatus == 8">
+      <div class="content_8_title">星巴克臻选™</div>
+    </div>
+    <div class="content_9" v-if="tabBarStatus == 9">
+      <div class="content_9_title">啡快™ － 在线点 到店取</div>
+    </div>
+    <div class="content_10" v-if="tabBarStatus == 10">
+      <div class="content_10_title">专星送™</div>
+    </div>
+    <div class="content_11" v-if="tabBarStatus == 11">
+      <div class="content_11_title">关于星巴克</div>
+      <div
+        v-for="(item, index) in aboutArr"
+        :key="index"
+        class="content_11_item"
+        :class="{ ischeck: item.istrue }"
+      >
+        {{ item.txt }}
+      </div>
+    </div>
+    <div class="content_12" v-if="tabBarStatus == 12">
+      <div class="content_12_title">帮助</div>
+      <div
+        v-for="(item, index) in helpArr"
+        :key="index"
+        class="content_12_item"
         :class="{ ischeck: item.istrue }"
       >
         {{ item.txt }}
@@ -157,12 +200,48 @@
     5==>移动app
     6==>门店
     7==>礼卡
+    8==>星巴克臻选™
+    9==>啡快™ － 在线点 到店取
+    10==>专星送™
+    11==>关于星巴克
+    12==>帮助
 */
 import { mapState } from "vuex";
 export default {
   data() {
     return {
       locationKeyWord: "",
+      aboutArr: [
+        { id: 1, txt: "星巴克在中国", istrue: true },
+        { id: 2, txt: "合作机会", istrue: false },
+        { id: 3, txt: "工作机会", istrue: false },
+        { id: 4, txt: "企业新闻", istrue: false },
+        { id: 5, txt: "社会责任", istrue: false },
+        { id: 6, txt: "历史回顾", istrue: false },
+        { id: 7, txt: "联系我们", istrue: false },
+      ],
+      helpArr: [
+        { id: 1, txt: "全部", istrue: true },
+        { id: 2, txt: "星巴克中国常见问题", istrue: false },
+        { id: 3, txt: "星享俱乐部常见问题解答", istrue: false },
+        { id: 4, txt: "星享俱乐部会员星礼包的常见问题解答", istrue: false },
+        { id: 5, txt: "星巴克专星送常见问题", istrue: false },
+        { id: 6, txt: "啡快服务常见问题", istrue: false },
+        { id: 7, txt: "星礼卡常见问题", istrue: false },
+        { id: 8, txt: "星巴克移动应用常见问题（手机应用）", istrue: false },
+        { id: 9, txt: "电子发票常见问题解答", istrue: false },
+        { id: 10, txt: "经营证照公示", istrue: false },
+        { id: 11, txt: "臻选店和旗舰店清单", istrue: false },
+        { id: 12, txt: "不可兑换会员星礼包好礼门店清单", istrue: false },
+        {
+          id: 13,
+          txt: "不能使用星巴克纸质饮料券兑换的饮品列表",
+          istrue: false,
+        },
+        { id: 14, txt: "不可销售星礼卡等预付卡券的门店列表", istrue: false },
+        { id: 15, txt: "隐私权政策", istrue: false },
+        { id: 16, txt: "其他条款与规定", istrue: false },
+      ],
       prizeArr: [
         { id: 1, txt: "关于星礼卡", istrue: true },
         { id: 2, txt: "管理星礼卡", istrue: false },
@@ -288,6 +367,30 @@ export default {
           this.$store.commit("toChangeTabBarStatus", 7);
           break;
         case 3:
+          this.$router.push("/select");
+          this.$store.commit("toChangeTabBarStatus", 8);
+          break;
+        case 4:
+          this.$router.push("/take");
+          this.$store.commit("toChangeTabBarStatus", 9);
+          break;
+        case 5:
+          this.$router.push("/send");
+          this.$store.commit("toChangeTabBarStatus", 10);
+          break;
+        case 6:
+           window.open('http://localhost:8080/home')
+          break;
+        case 7:
+           window.open('http://localhost:8080/home')
+          break;
+        case 8:
+          this.$router.push("/about");
+          this.$store.commit("toChangeTabBarStatus", 11);
+          break;
+        case 9:
+          this.$router.push("/help");
+          this.$store.commit("toChangeTabBarStatus", 12);
           break;
       }
     },
@@ -436,7 +539,7 @@ export default {
     height: 100%;
     overflow: auto;
     .location {
-      padding-left:30px ;
+      padding-left: 30px;
       cursor: pointer;
       .location_img {
         height: 18px;
@@ -453,7 +556,7 @@ export default {
       }
     }
     .inp_box {
-      padding-left:30px ;
+      padding-left: 30px;
       display: flex;
       align-items: center;
       position: relative;
@@ -461,35 +564,35 @@ export default {
         position: absolute;
         right: 30px;
         top: 10px;
-        color: #1eb274 ;
+        color: #1eb274;
         cursor: pointer;
       }
-      ::v-deep.my_inp{
+      ::v-deep.my_inp {
         width: 300px;
         border: 0;
-        border-bottom: 1px solid #ccc ;
-        input{
+        border-bottom: 1px solid #ccc;
+        input {
           border: 0;
         }
       }
     }
     .local_box {
-      .title{
+      .title {
         font-weight: 600;
         margin-bottom: 10px;
       }
-      p{
+      p {
         font-size: 14px;
       }
-      .local_left_img{
+      .local_left_img {
         margin-right: 20px;
       }
-      .local_right_img{
+      .local_right_img {
         margin-left: 20px;
       }
       .local {
         cursor: pointer;
-         padding: 0 30px;
+        padding: 0 30px;
         height: 150px;
         width: 450px;
         display: flex;
@@ -513,6 +616,91 @@ export default {
       margin-bottom: 30px;
     }
     .content_7_item {
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+      color: #666666;
+      cursor: pointer;
+      &.ischeck {
+        border-bottom: 3px solid #1eb274;
+        color: #000;
+      }
+    }
+  }
+  .content_8 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_8_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+  }
+  .content_9 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_9_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+  }
+  .content_10 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_10_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+  }
+  .content_11 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_11_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+    .content_11_item {
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+      color: #666666;
+      cursor: pointer;
+      &.ischeck {
+        border-bottom: 3px solid #1eb274;
+        color: #000;
+      }
+    }
+  }
+  .content_12 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 100px;
+    height: 100%;
+    .content_12_title {
+      font-weight: 600;
+      font-size: 22px;
+      margin-bottom: 30px;
+    }
+    .content_12_item {
       margin-bottom: 10px;
       padding-bottom: 2px;
       color: #666666;

@@ -18,6 +18,16 @@ const Map =()=>import('@/pages/map/map.vue')
 
 const Prize =()=>import('@/pages/prize/prize.vue')
 
+const Slect=()=>import('@/pages/select/select.vue')
+
+const About=()=>import('@/pages/about/about.vue')
+
+const Take=()=>import('@/pages/take/take.vue')
+
+const Send=()=>import('@/pages/send/send.vue')
+
+const Help=()=>import('@/pages/help/help.vue')
+
 const routes = [
 	{ path: '/home', component: Home },
 	{ path: '/login', component: Login },
@@ -26,6 +36,11 @@ const routes = [
 	{ path: '/menu', component: Menu },
 	{ path: '/app', component: App },
 	{ path: '/map', component: Map },
+	{ path: '/select', component: Slect },
+	{ path: '/about', component: About },
+	{ path: '/take', component: Take },
+	{ path: '/send', component: Send },
+	{ path: '/help', component: Help },
 	{ path: '/prize', component: Prize },
 ]
 
