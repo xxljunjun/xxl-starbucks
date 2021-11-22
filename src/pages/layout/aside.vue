@@ -1,5 +1,5 @@
 <template>
-  <div class="aside_box" :class="{ xiaoshi: tabBarStatus == 1 }">
+  <div class="aside_box">
     <div class="tab_Bar">
       <div>
         <img src="@/assets/svg/logo.svg" alt="" class="logo" @click="refresh" />
@@ -107,7 +107,32 @@
         {{ item.txt }}
       </div>
     </div>
-    <div class="content_6" v-if="tabBarStatus == 6">地图查找</div>
+    <div class="content_6" v-if="tabBarStatus == 6">
+      <div class="location">
+        <img src="@/assets/svg/icon-account.svg" alt="" class="location_img" />
+        <span class="local_txt">广东 深圳</span>
+        <img src="@/assets/svg/icon-account.svg" alt="" class="arrow_img" />
+      </div>
+      <div class="inp_box">
+        <el-input v-model="locationKeyWord" placeholder="输入地址查找门店" class="my_inp"></el-input>
+        <div class="inp_txt">筛选</div>
+      </div>
+      <div class="local_box">
+        <div class="local" v-for="(item, index) in 12" :key="index">
+          <div class="left">
+            <img src="@/assets/svg/icon-account.svg" alt="" class="local_left_img" />
+          </div>
+          <div class="middle">
+            <p class="title">深圳华强北贸易店</p>
+            <p>深圳市 广东省 深圳市 深圳市福田区华强北路</p>
+            <p>深圳华强北贸易店</p>
+          </div>
+          <div class="right">
+            <img src="@/assets/svg/icon-account.svg" alt="" class="local_right_img" />
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="content_7" v-if="tabBarStatus == 7">
       <div class="content_7_title">星礼卡</div>
       <div
@@ -137,7 +162,8 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      prizeArr:[
+      locationKeyWord: "",
+      prizeArr: [
         { id: 1, txt: "关于星礼卡", istrue: true },
         { id: 2, txt: "管理星礼卡", istrue: false },
         { id: 3, txt: "发票处理进度查询", istrue: false },
@@ -258,7 +284,7 @@ export default {
           this.$store.commit("toChangeTabBarStatus", 5);
           break;
         case 2:
-           this.$router.push("/prize");
+          this.$router.push("/prize");
           this.$store.commit("toChangeTabBarStatus", 7);
           break;
         case 3:
@@ -278,9 +304,6 @@ export default {
   padding-top: 30px;
   box-sizing: border-box;
   box-shadow: 1px 1px 5px #ccc;
-  &.xiaoshi {
-    overflow: auto;
-  }
   .tab_Bar {
     // margin-top: 30px;
     height: 50px;
@@ -404,6 +427,76 @@ export default {
       &.ischeck {
         border-bottom: 3px solid #1eb274;
         color: #000;
+      }
+    }
+  }
+  .content_6 {
+    margin-top: 40px;
+    box-sizing: border-box;
+    height: 100%;
+    overflow: auto;
+    .location {
+      padding-left:30px ;
+      cursor: pointer;
+      .location_img {
+        height: 18px;
+        width: 14px;
+        margin-right: 10px;
+      }
+      .local_txt {
+        font-size: 16px;
+      }
+      .arrow_img {
+        margin-left: 5px;
+        width: 6px;
+        height: 6px;
+      }
+    }
+    .inp_box {
+      padding-left:30px ;
+      display: flex;
+      align-items: center;
+      position: relative;
+      .inp_txt {
+        position: absolute;
+        right: 30px;
+        top: 10px;
+        color: #1eb274 ;
+        cursor: pointer;
+      }
+      ::v-deep.my_inp{
+        width: 300px;
+        border: 0;
+        border-bottom: 1px solid #ccc ;
+        input{
+          border: 0;
+        }
+      }
+    }
+    .local_box {
+      .title{
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      p{
+        font-size: 14px;
+      }
+      .local_left_img{
+        margin-right: 20px;
+      }
+      .local_right_img{
+        margin-left: 20px;
+      }
+      .local {
+        cursor: pointer;
+         padding: 0 30px;
+        height: 150px;
+        width: 450px;
+        display: flex;
+        align-items: center;
+        &:hover {
+          background: #f5f5f5;
+        }
       }
     }
   }

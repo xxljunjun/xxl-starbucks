@@ -36,6 +36,7 @@ import Aside from './aside.vue'
         width: 450px;
         float: left;
         height: 100%;
+        // overflow: auto;
         // overflow: hidden;
     }
     .xxl_main{
