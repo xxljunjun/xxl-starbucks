@@ -1,8 +1,18 @@
 <template>
   <div class="home">
-    <img src="@/static/home/banner.jpg" alt="" class="banner" @click="goToClub"/>
+    <img
+      src="@/static/home/banner.jpg"
+      alt=""
+      class="banner"
+      @click="goToClub"
+    />
     <div class="box">
-      <div class="img_box" v-for="(item, index) in imgArr" :key="index" @click="goToOtherPage(item)">
+      <div
+        class="img_box"
+        v-for="(item, index) in imgArr"
+        :key="index"
+        @click="goToOtherPage(item)"
+      >
         <img :src="item.path" alt="" />
       </div>
     </div>
@@ -12,7 +22,7 @@
         <div class="txt">
           开启您的星享之旅，星星越多、会员等级越高、好礼越丰富。<span
             class="more"
-             @click="goToClub"
+            @click="goToClub"
             >{{ "了解更多>" }}</span
           >
         </div>
@@ -27,11 +37,16 @@
       <h2 class="title">星巴克精选</h2>
       <p class="txt">在星巴克天猫旗舰店发现更多咖啡心意</p>
       <div class="car_large">
-        <div class="care_box" v-for="(item, index) in box_Arr" :key="index" @click="goToOtherPage(item)">
+        <div
+          class="care_box"
+          v-for="(item, index) in box_Arr"
+          :key="index"
+          @click="goToOtherPage(item)"
+        >
           <img :src="item.path" alt="" class="top_img" />
           <p class="box_title">{{ item.title }}</p>
           <p>{{ item.txt }}</p>
-          <p class='more'>{{ "了解更多>" }}</p>
+          <p class="more">{{ "了解更多>" }}</p>
         </div>
       </div>
     </div>
@@ -39,7 +54,12 @@
       <h2 class="title">1912 派克街 | 咖啡星讲堂</h2>
       <p class="txt_1">了解更多星巴克咖啡文化</p>
       <div class="swiper">
-        <div class="swiper_box" v-for="(item, index) in last_Arr" :key="index" @click="goToOtherPage(item)">
+        <div
+          class="swiper_box"
+          v-for="(item, index) in last_Arr"
+          :key="index"
+          @click="goToOtherPage(item)"
+        >
           <img :src="item.path" alt="" class="top_img" />
           <span class="title_1">{{ item.title }}</span>
           <span class="txt">{{ item.txt }}</span>
@@ -54,90 +74,96 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      imgArr: [
-        { id: 1, path: require("@/static/home/banner_1.jpg") },
-        { id: 2, path: require("@/static/home/banner_2.jpg") },
-        { id: 3, path: require("@/static/home/banner_3.jpg") },
-      ],
-      box_Arr: [
-        {
-          id: 1,
-          path: require("@/static/home/top_1.png"),
-          title: "会员星礼包",
-          txt: "用一份心礼，让心意相随",
-        },
-        {
-          id: 2,
-          path: require("@/static/home/top_2.png"),
-          title: "会员星礼包",
-          txt: "用一份心礼，让心意相随",
-        },
-        {
-          id: 3,
-          path: require("@/static/home/top_3.png"),
-          title: "会员星礼包",
-          txt: "用一份心礼，让心意相随",
-        },
-        {
-          id: 4,
-          path: require("@/static/home/top_4.png"),
-          title: "会员星礼包",
-          txt: "用一份心礼，让心意相随",
-        },
-      ],
-      last_Arr: [
-        {
-          id: 1,
-          path: require("@/static/home/banner_1.jpg"),
-          title: "咖啡的起源与培植",
-          txt: "咖啡知识",
-        },
-        {
-          id: 2,
-          path: require("@/static/home/banner_1.jpg"),
-          title: "咖啡调制",
-          txt: "咖啡品鉴",
-        },
-        {
-          id: 3,
-          path: require("@/static/home/banner_1.jpg"),
-          title: "手冲咖啡",
-          txt: "咖啡知识",
-        },
-        {
-          id: 4,
-          path: require("@/static/home/banner_1.jpg"),
-          title: "咖啡的起源与培植",
-          txt: "咖啡品鉴",
-        },
-      ],
-    };
+<script lang='ts'>
+import { Component, Vue } from "vue-property-decorator";
+@Component({
+  components: {},
+  beforeRouteLeave(to: any, from: any, next: any) {
+    console.log("beforeRouteLeave");
+    next();
   },
-  methods: {
-    goToOtherPage(item){
-      console.log(item)
-      window.open('http://localhost:8080/home')
-    },
-    goToRegister() {
-      console.log("去注册");
-      this.$router.push("/register");
-      this.$store.commit("toChangeTabBarStatus", 4);
-    },
-    goToLogin() {
-      console.log("去登录");
-      this.$router.push("/login");
-      this.$store.commit("toChangeTabBarStatus", 4);
-    },
-    goToClub(){
-       this.$router.push("/club");
-       this.$store.commit("toChangeTabBarStatus", 4);
-    }
+  beforeRouteEnter(to: any, from: any, next: any) {
+    console.log("beforeRouteEnter");
+    next();
   },
-};
+})
+export default class Home extends Vue {
+  imgArr: any[] = [
+    { id: 1, path: require("@/static/home/banner_1.jpg") },
+    { id: 2, path: require("@/static/home/banner_2.jpg") },
+    { id: 3, path: require("@/static/home/banner_3.jpg") },
+  ];
+  box_Arr: any[] = [
+    {
+      id: 1,
+      path: require("@/static/home/top_1.png"),
+      title: "会员星礼包",
+      txt: "用一份心礼，让心意相随",
+    },
+    {
+      id: 2,
+      path: require("@/static/home/top_2.png"),
+      title: "会员星礼包",
+      txt: "用一份心礼，让心意相随",
+    },
+    {
+      id: 3,
+      path: require("@/static/home/top_3.png"),
+      title: "会员星礼包",
+      txt: "用一份心礼，让心意相随",
+    },
+    {
+      id: 4,
+      path: require("@/static/home/top_4.png"),
+      title: "会员星礼包",
+      txt: "用一份心礼，让心意相随",
+    },
+  ];
+  last_Arr: any[] = [
+    {
+      id: 1,
+      path: require("@/static/home/banner_1.jpg"),
+      title: "咖啡的起源与培植",
+      txt: "咖啡知识",
+    },
+    {
+      id: 2,
+      path: require("@/static/home/banner_1.jpg"),
+      title: "咖啡调制",
+      txt: "咖啡品鉴",
+    },
+    {
+      id: 3,
+      path: require("@/static/home/banner_1.jpg"),
+      title: "手冲咖啡",
+      txt: "咖啡知识",
+    },
+    {
+      id: 4,
+      path: require("@/static/home/banner_1.jpg"),
+      title: "咖啡的起源与培植",
+      txt: "咖啡品鉴",
+    },
+  ];
+  goToOtherPage(item:any) {
+    console.log(item);
+    window.open("http://localhost:8080/home");
+  }
+  goToRegister() {
+    console.log("去注册");
+    this.$router.push("/register");
+    this.$store.commit("toChangeTabBarStatus", 4);
+  }
+  goToLogin() {
+    console.log("去登录");
+    this.$router.push("/login");
+    this.$store.commit("toChangeTabBarStatus", 4);
+  }
+  goToClub() {
+    this.$router.push("/club");
+    this.$store.commit("toChangeTabBarStatus", 4);
+  }
+}
 </script>
 
 <style lang="scss" scoped>
@@ -249,15 +275,15 @@ export default {
         position: relative;
         box-sizing: border-box;
         padding: 50px 20px 0 20px;
-         &:hover {
+        &:hover {
           box-shadow: 1px 1px 5px #ccc;
           transition: 0.3s;
           transform: translate(0, -3px);
         }
-        .more{
+        .more {
           color: #c2a661;
         }
-        .box_title{
+        .box_title {
           font-weight: 600;
         }
         p {

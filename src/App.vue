@@ -1,30 +1,64 @@
 <template>
   <div id="app">
-    <LayOut/>
+    <LayOut />
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import LayOut from './pages/layout/index.vue'
-
+import { Component, Vue } from "vue-property-decorator";
+import LayOut from "./pages/layout/index.vue";
 @Component({
   components: {
-    LayOut
+    LayOut,
   },
+  filters:{},
+  directives:{},
+  mixins:[],
+  // beforeRouteEnter(to:any, from:any, next:any) {
+  //   // 在渲染该组件的对应路由被 confirm 前调用
+  //   // 不！能！获取组件实例 `this`
+  //   // 因为当守卫执行前，组件实例还没被创建
+  // },
+  // beforeRouteUpdate(to:any, from:any, next:any) {
+  //   // 在当前路由改变，但是该组件被复用时调用
+  //   // 举例来说，对于一个带有动态参数的路径 /foo/:id，在 /foo/1 和 /foo/2 之间跳转的时候，
+  //   // 由于会渲染同样的 Foo 组件，因此组件实例会被复用。而这个钩子就会在这个情况下被调用。
+  //   // 可以访问组件实例 `this`
+  // },
+  // beforeRouteLeave(to:any, from:any, next:any) {
+  //   // 导航离开该组件的对应路由时调用
+  //   // 可以访问组件实例 `this`
+  // },
 })
-export default class App extends Vue {}
+export default class App extends Vue {
+  beforeCreate() {}
+  created() {}
+  beforeMount() {}
+  mounted() {}
+  beforeUpdate() {}
+  updated() {}
+  beforeDestroy() {}
+  destroyed() {}
+  activated() {}
+  deactivated() {}
+  errorCaptured(err: any, vm: any, info: any) {
+    console.log(err);
+    console.log(vm);
+    console.log(info);
+  }
+}
 </script>
 
 <style lang="scss">
-*{
+* {
   padding: 0;
   margin: 0;
 }
-html,body{
-   height: 100%;
+html,
+body {
+  height: 100%;
 }
-#app{
-   height: 100%;
+#app {
+  height: 100%;
 }
 </style>

@@ -110,7 +110,22 @@ app.$mount()
 npm install vue-amap --save
 ```
 ### 七、集成typescript
-```
+```js
 vue add typescript
-采用vue-property-decorator和vue-class-component装饰器语法书写代码
+//采用vue-property-decorator和vue-class-component装饰器语法书写代码
+import { 
+  Vue, 
+  Component, 
+  Prop, 
+  PropSync,
+  Model,
+  Watch,
+  Emit, 
+  Ref, 
+  Provide, 
+  ProvideReactive,
+  Inject, 
+  InjectReactive 
+} from 'vue-property-decorator';
+
 ```
