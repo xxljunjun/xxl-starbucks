@@ -4,14 +4,16 @@
   </div>
 </template>
 
-<script>
-import LayOut from '@/pages/layout/index.vue'
-export default {
-  name: 'App',
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator';
+import LayOut from './pages/layout/index.vue'
+
+@Component({
   components: {
     LayOut
   },
-}
+})
+export default class App extends Vue {}
 </script>
 
 <style lang="scss">

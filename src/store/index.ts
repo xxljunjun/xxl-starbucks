@@ -15,7 +15,7 @@ const store = new Vuex.Store({
 		toChangeTabBarStatus(state,payload){
 			console.log(state)
 			console.log(payload)
-			this.state.tabBarStatus = payload
+			state.tabBarStatus = payload
 		}
 	},
 	actions: {

@@ -106,5 +106,11 @@ app.$mount()
 
 ### 六、安装基于vue的地图插件
 ```
+//暂时不支持typescript
 npm install vue-amap --save
+```
+### 七、集成typescript
+```
+vue add typescript
+采用vue-property-decorator和vue-class-component装饰器语法书写代码
 ```
