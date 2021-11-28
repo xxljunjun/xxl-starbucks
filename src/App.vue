@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-import LayOut from "./pages/layout/index.vue";
+import LayOut from "@/pages/layout/index.vue";
 @Component({
   components: {
     LayOut,

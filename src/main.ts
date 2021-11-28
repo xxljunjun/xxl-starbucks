@@ -1,17 +1,16 @@
 import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import App from '@/App.vue'
+import router from '@/router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
-import store from './store'
-
-Vue.use(ElementUI);
-Vue.config.productionTip = false
-
-// 引入vue-amap
-
+import store from '@/store'
+import '@/mock/index.js'
 import AMap from 'vue-amap';
-Vue.use(AMap);
+
+console.log('当前环境变量',process.env)
+require("@/mock");
+Vue.use(ElementUI);
+Vue.use(AMap);// 引入vue-amap
 // 初始化vue-amap
 AMap.initAMapApiLoader({
   // 申请的高德key
@@ -19,7 +18,7 @@ AMap.initAMapApiLoader({
   // 插件集合
   plugin: ['']
 });
-
+Vue.config.productionTip = false
 new Vue({
   router,
   store,

@@ -70,7 +70,15 @@ module.exports = {
       '/api': {
         target: 'http://10.20.158.29:9000',   // 是IP的内网地址
         changeOrigin: true
-      }
+      },
+      '/he': {
+				target: 'https://way.jd.com',
+				ws: true, // 代理的WebSockets
+				changeOrigin: true, // 允许websockets跨域
+				pathRewrite: {
+					'^/api': ''
+				}
+			}
     }
   }
 }

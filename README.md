@@ -129,3 +129,25 @@ import {
 } from 'vue-property-decorator';
 
 ```
+### 八、封装axios请求
+```
+cnpm install --save axios
+```
+### 九、安装mockjs
+```
+cnpm install mockjs -D
+```
+### 十、配置区分环境变量
++ 获取环境变量
+```js
+console.lgo('获取全局环境变量',process.env)
+//.env.dev
+"dev": "vue-cli-service serve --mode dev",
+
+//.env.test
+"dev": "vue-cli-service serve --mode test",
+
+//.env.prod
+"dev": "vue-cli-service serve --mode prod",
+
+```
