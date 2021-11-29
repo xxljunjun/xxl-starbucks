@@ -3,12 +3,15 @@
 </el-amap>
 </template>
 
-<script>
-export default {};
+<script lang='ts'>
+import { Component, Vue } from "vue-property-decorator";
+@Component({
+})
+export default class App extends Vue {
+
+}
 </script>
 
 <style lang="scss" scoped>
-.my_map{
 
-}
 </style>

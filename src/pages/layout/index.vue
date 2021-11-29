@@ -9,17 +9,21 @@
   </div>
 </template>
 
-<script>
-import Aside from "./aside.vue";
-import { getWeather,testmock } from "../../api/home/index";
-export default {
-  data() {
-    return {};
-  },
+<script lang='ts'>
+import { Component, Vue } from "vue-property-decorator";
+import Aside from "@/pages/layout/aside.vue";
+import { getWeather, testmock } from "@/api/home/index";
+@Component({
   components: {
     Aside,
   },
+})
+export default class Help extends Vue {
   mounted() {
+    this.toGetWeather()
+    this.toTestmock()
+  }
+  toGetWeather() {
     let params = {
       city: "深圳",
       appkey: "7a85fc9df58cd155f764e033a257d879",
@@ -27,12 +31,13 @@ export default {
     getWeather(params).then((res) => {
       console.log("获取天气", res);
     });
-    testmock().then(res=>{
-      console.log('测试mock接口',res)
-    })
-  },
-  methods: {},
-};
+  }
+  toTestmock() {
+    testmock().then((res) => {
+      console.log("测试mock接口", res);
+    });
+  }
+}
 </script>
 
 <style lang="scss" scoped>

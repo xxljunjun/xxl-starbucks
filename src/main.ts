@@ -8,6 +8,7 @@ import '@/mock/index.js'
 import AMap from 'vue-amap';
 
 console.log('当前环境变量',process.env)
+console.log("当前的屏幕宽度",document.body.clientWidth)
 require("@/mock");
 Vue.use(ElementUI);
 Vue.use(AMap);// 引入vue-amap

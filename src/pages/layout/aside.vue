@@ -190,7 +190,7 @@
   </div>
 </template>
 
-<script>
+<script lang='ts'>
 /*
   tabBarStatus是vuex的全局变量
     1==>菜单栏的显示
@@ -207,195 +207,193 @@
     12==>帮助
 */
 import { mapState } from "vuex";
-export default {
-  data() {
-    return {
-      locationKeyWord: "",
-      aboutArr: [
-        { id: 1, txt: "星巴克在中国", istrue: true },
-        { id: 2, txt: "合作机会", istrue: false },
-        { id: 3, txt: "工作机会", istrue: false },
-        { id: 4, txt: "企业新闻", istrue: false },
-        { id: 5, txt: "社会责任", istrue: false },
-        { id: 6, txt: "历史回顾", istrue: false },
-        { id: 7, txt: "联系我们", istrue: false },
-      ],
-      helpArr: [
-        { id: 1, txt: "全部", istrue: true },
-        { id: 2, txt: "星巴克中国常见问题", istrue: false },
-        { id: 3, txt: "星享俱乐部常见问题解答", istrue: false },
-        { id: 4, txt: "星享俱乐部会员星礼包的常见问题解答", istrue: false },
-        { id: 5, txt: "星巴克专星送常见问题", istrue: false },
-        { id: 6, txt: "啡快服务常见问题", istrue: false },
-        { id: 7, txt: "星礼卡常见问题", istrue: false },
-        { id: 8, txt: "星巴克移动应用常见问题（手机应用）", istrue: false },
-        { id: 9, txt: "电子发票常见问题解答", istrue: false },
-        { id: 10, txt: "经营证照公示", istrue: false },
-        { id: 11, txt: "臻选店和旗舰店清单", istrue: false },
-        { id: 12, txt: "不可兑换会员星礼包好礼门店清单", istrue: false },
-        {
-          id: 13,
-          txt: "不能使用星巴克纸质饮料券兑换的饮品列表",
-          istrue: false,
-        },
-        { id: 14, txt: "不可销售星礼卡等预付卡券的门店列表", istrue: false },
-        { id: 15, txt: "隐私权政策", istrue: false },
-        { id: 16, txt: "其他条款与规定", istrue: false },
-      ],
-      prizeArr: [
-        { id: 1, txt: "关于星礼卡", istrue: true },
-        { id: 2, txt: "管理星礼卡", istrue: false },
-        { id: 3, txt: "发票处理进度查询", istrue: false },
-      ],
-      appArr: [
-        { id: 1, txt: "星巴克移动应用", istrue: true },
-        { id: 2, txt: "星巴克 Apple Watch", istrue: false },
-      ],
-      countArr: [
-        { id: 1, txt: "登录", istrue: true },
-        { id: 2, txt: "注册", istrue: false },
-        { id: 3, txt: "关于星享俱乐部", istrue: false },
-      ],
-      menuArr: [
-        { id: 1, txt: "全部", istrue: true },
-        { id: 2, txt: "饮料", istrue: false },
-        { id: 3, txt: "美食", istrue: false },
-        { id: 4, txt: "咖啡产品", istrue: false },
-        { id: 5, txt: "商品", istrue: false },
-      ],
-      tabBarArr: [
-        { id: 1, txt: "门店" },
-        { id: 2, txt: "我的账户" },
-        { id: 3, txt: "菜单" },
-      ],
-      list_1: [
-        { id: 1, txt: "门店" },
-        { id: 2, txt: "星享俱乐部" },
-        { id: 3, txt: "菜单" },
-      ],
-      list_2: [
-        { id: 1, txt: "星巴克移动应用" },
-        { id: 2, txt: "星礼卡" },
-        { id: 3, txt: "星巴克臻选™" },
-        { id: 4, txt: "啡快™ － 在线点 到店取" },
-        { id: 5, txt: "专星送™" },
-        { id: 6, txt: "咖啡星讲堂" },
-        { id: 7, txt: "上海烘焙工坊" },
-        { id: 8, txt: "关于星巴克" },
-        { id: 9, txt: "帮助中心" },
-      ],
-    };
-  },
+import { Component, Vue } from "vue-property-decorator";
+
+@Component({
   computed: {
     ...mapState(["tabBarStatus"]),
   },
-  methods: {
-    changeStatusTrue() {
-      this.$store.commit("toChangeTabBarStatus", 1);
+})
+export default class Aside extends Vue {
+  locationKeyWord: string = "";
+  aboutArr: any[] = [
+    { id: 1, txt: "星巴克在中国", istrue: true },
+    { id: 2, txt: "合作机会", istrue: false },
+    { id: 3, txt: "工作机会", istrue: false },
+    { id: 4, txt: "企业新闻", istrue: false },
+    { id: 5, txt: "社会责任", istrue: false },
+    { id: 6, txt: "历史回顾", istrue: false },
+    { id: 7, txt: "联系我们", istrue: false },
+  ];
+  helpArr: any[] = [
+    { id: 1, txt: "全部", istrue: true },
+    { id: 2, txt: "星巴克中国常见问题", istrue: false },
+    { id: 3, txt: "星享俱乐部常见问题解答", istrue: false },
+    { id: 4, txt: "星享俱乐部会员星礼包的常见问题解答", istrue: false },
+    { id: 5, txt: "星巴克专星送常见问题", istrue: false },
+    { id: 6, txt: "啡快服务常见问题", istrue: false },
+    { id: 7, txt: "星礼卡常见问题", istrue: false },
+    { id: 8, txt: "星巴克移动应用常见问题（手机应用）", istrue: false },
+    { id: 9, txt: "电子发票常见问题解答", istrue: false },
+    { id: 10, txt: "经营证照公示", istrue: false },
+    { id: 11, txt: "臻选店和旗舰店清单", istrue: false },
+    { id: 12, txt: "不可兑换会员星礼包好礼门店清单", istrue: false },
+    {
+      id: 13,
+      txt: "不能使用星巴克纸质饮料券兑换的饮品列表",
+      istrue: false,
     },
-    changeStatusFalse() {
-      this.$store.commit("toChangeTabBarStatus", 2);
-    },
-    showMume() {
-      console.log("显示");
-      if (this.tabBarStatus == 1) {
-        this.changeStatusFalse();
-      } else {
-        this.changeStatusTrue();
-      }
-    },
-    refresh() {
-      console.log("刷新页面");
-      // this.$router.go(0);
+    { id: 14, txt: "不可销售星礼卡等预付卡券的门店列表", istrue: false },
+    { id: 15, txt: "隐私权政策", istrue: false },
+    { id: 16, txt: "其他条款与规定", istrue: false },
+  ];
+  prizeArr: any[] = [
+    { id: 1, txt: "关于星礼卡", istrue: true },
+    { id: 2, txt: "管理星礼卡", istrue: false },
+    { id: 3, txt: "发票处理进度查询", istrue: false },
+  ];
+  appArr: any[] = [
+    { id: 1, txt: "星巴克移动应用", istrue: true },
+    { id: 2, txt: "星巴克 Apple Watch", istrue: false },
+  ];
+  countArr: any[] = [
+    { id: 1, txt: "登录", istrue: true },
+    { id: 2, txt: "注册", istrue: false },
+    { id: 3, txt: "关于星享俱乐部", istrue: false },
+  ];
+  menuArr: Array<any> = [
+    { id: 1, txt: "全部", istrue: true },
+    { id: 2, txt: "饮料", istrue: false },
+    { id: 3, txt: "美食", istrue: false },
+    { id: 4, txt: "咖啡产品", istrue: false },
+    { id: 5, txt: "商品", istrue: false },
+  ];
+  tabBarArr: Array<any> = [
+    { id: 1, txt: "门店" },
+    { id: 2, txt: "我的账户" },
+    { id: 3, txt: "菜单" },
+  ];
+  list_1: Array<any> = [
+    { id: 1, txt: "门店" },
+    { id: 2, txt: "星享俱乐部" },
+    { id: 3, txt: "菜单" },
+  ];
+  list_2: any[] = [
+    { id: 1, txt: "星巴克移动应用" },
+    { id: 2, txt: "星礼卡" },
+    { id: 3, txt: "星巴克臻选™" },
+    { id: 4, txt: "啡快™ － 在线点 到店取" },
+    { id: 5, txt: "专星送™" },
+    { id: 6, txt: "咖啡星讲堂" },
+    { id: 7, txt: "上海烘焙工坊" },
+    { id: 8, txt: "关于星巴克" },
+    { id: 9, txt: "帮助中心" },
+  ];
+  changeStatusTrue() {
+    this.$store.commit("toChangeTabBarStatus", 1);
+  }
+  changeStatusFalse() {
+    this.$store.commit("toChangeTabBarStatus", 2);
+  }
+  showMume() {
+    console.log("显示");
+    if (this.tabBarStatus == 1) {
       this.changeStatusFalse();
-      this.$router.push("/home");
-    },
-    goToRegister() {
-      console.log("去注册");
-      this.$router.push("/register");
-      this.$store.commit("toChangeTabBarStatus", 4);
-    },
-    goToLogin() {
-      console.log("去登录");
-      this.$router.push("/login");
-      this.$store.commit("toChangeTabBarStatus", 4);
-    },
-    clickTab(item) {
-      switch (item.id) {
-        case 1:
-          this.$router.push("/map");
-          this.$store.commit("toChangeTabBarStatus", 6);
-          break;
-        case 2:
-          this.$router.push("/login");
-          this.$store.commit("toChangeTabBarStatus", 4);
-          break;
-        case 3:
-          this.$router.push("/menu");
-          this.$store.commit("toChangeTabBarStatus", 3); //菜单tabBar显示
-          break;
-        default:
-          break;
-      }
-    },
-    goToPage_1(item) {
-      this.changeStatusFalse();
-      switch (item.id) {
-        case 1:
-          this.$router.push("/map");
-          this.$store.commit("toChangeTabBarStatus", 6);
-          break;
-        case 2:
-          this.$router.push("/club");
-          this.$store.commit("toChangeTabBarStatus", 4);
-          break;
-        case 3:
-          this.$router.push("/menu");
-          this.$store.commit("toChangeTabBarStatus", 3);
-          break;
-      }
-    },
-    goToPage_2(item) {
-      this.changeStatusFalse();
-      switch (item.id) {
-        case 1:
-          this.$router.push("/app");
-          this.$store.commit("toChangeTabBarStatus", 5);
-          break;
-        case 2:
-          this.$router.push("/prize");
-          this.$store.commit("toChangeTabBarStatus", 7);
-          break;
-        case 3:
-          this.$router.push("/select");
-          this.$store.commit("toChangeTabBarStatus", 8);
-          break;
-        case 4:
-          this.$router.push("/take");
-          this.$store.commit("toChangeTabBarStatus", 9);
-          break;
-        case 5:
-          this.$router.push("/send");
-          this.$store.commit("toChangeTabBarStatus", 10);
-          break;
-        case 6:
-           window.open('http://localhost:8080/home')
-          break;
-        case 7:
-           window.open('http://localhost:8080/home')
-          break;
-        case 8:
-          this.$router.push("/about");
-          this.$store.commit("toChangeTabBarStatus", 11);
-          break;
-        case 9:
-          this.$router.push("/help");
-          this.$store.commit("toChangeTabBarStatus", 12);
-          break;
-      }
-    },
-  },
-};
+    } else {
+      this.changeStatusTrue();
+    }
+  }
+  refresh() {
+    console.log("刷新页面");
+    // this.$router.go(0);
+    this.changeStatusFalse();
+    this.$router.push("/home");
+  }
+  goToRegister() {
+    console.log("去注册");
+    this.$router.push("/register");
+    this.$store.commit("toChangeTabBarStatus", 4);
+  }
+  goToLogin() {
+    console.log("去登录");
+    this.$router.push("/login");
+    this.$store.commit("toChangeTabBarStatus", 4);
+  }
+  clickTab(item: any) {
+    switch (item.id) {
+      case 1:
+        this.$router.push("/map");
+        this.$store.commit("toChangeTabBarStatus", 6);
+        break;
+      case 2:
+        this.$router.push("/login");
+        this.$store.commit("toChangeTabBarStatus", 4);
+        break;
+      case 3:
+        this.$router.push("/menu");
+        this.$store.commit("toChangeTabBarStatus", 3); //菜单tabBar显示
+        break;
+      default:
+        break;
+    }
+  }
+  goToPage_1(item: any) {
+    this.changeStatusFalse();
+    switch (item.id) {
+      case 1:
+        this.$router.push("/map");
+        this.$store.commit("toChangeTabBarStatus", 6);
+        break;
+      case 2:
+        this.$router.push("/club");
+        this.$store.commit("toChangeTabBarStatus", 4);
+        break;
+      case 3:
+        this.$router.push("/menu");
+        this.$store.commit("toChangeTabBarStatus", 3);
+        break;
+    }
+  }
+  goToPage_2(item: any) {
+    this.changeStatusFalse();
+    switch (item.id) {
+      case 1:
+        this.$router.push("/app");
+        this.$store.commit("toChangeTabBarStatus", 5);
+        break;
+      case 2:
+        this.$router.push("/prize");
+        this.$store.commit("toChangeTabBarStatus", 7);
+        break;
+      case 3:
+        this.$router.push("/select");
+        this.$store.commit("toChangeTabBarStatus", 8);
+        break;
+      case 4:
+        this.$router.push("/take");
+        this.$store.commit("toChangeTabBarStatus", 9);
+        break;
+      case 5:
+        this.$router.push("/send");
+        this.$store.commit("toChangeTabBarStatus", 10);
+        break;
+      case 6:
+        window.open("http://localhost:8080/home");
+        break;
+      case 7:
+        window.open("http://localhost:8080/home");
+        break;
+      case 8:
+        this.$router.push("/about");
+        this.$store.commit("toChangeTabBarStatus", 11);
+        break;
+      case 9:
+        this.$router.push("/help");
+        this.$store.commit("toChangeTabBarStatus", 12);
+        break;
+    }
+  }
+}
 </script>
 
 <style lang="scss" scoped>
