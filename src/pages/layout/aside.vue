@@ -32,6 +32,7 @@
       </div>
     </div>
     <!--菜单栏的显示-->
+     <transition name="slide-fade">
     <div class="menulist" v-if="tabBarStatus == 1">
       <div class="menulist_top">
         <p
@@ -64,6 +65,7 @@
         <div class="last_item">使用条款</div>
       </div>
     </div>
+    </transition>
     <div class="content" v-if="tabBarStatus == 2">
       <div class="content_top">
         <div class="txt">心情惬意，来杯咖啡吧 ☕</div>
@@ -421,6 +423,28 @@ export default class Aside extends Vue {
 </script>
 
 <style lang="scss" scoped>
+.slide-fade-enter{
+    //定义进入过渡的开始状态。在元素被插入之前生效，在元素被插入之后的下一帧移除。
+    // transform: translateX(10px);
+     opacity: 0;
+}
+.slide-fade-enter-active{
+    transition: all .4s ease;
+}
+.slide-fade-enter-to{
+
+}
+.slide-fade-leave{
+   
+}
+.slide-fade-leave-active{
+     transition: all .2s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-leave-to{
+    //  transform: translateX(10px);
+     opacity: 0;
+}
+
 .aside_box {
   color: #000;
   width: 450px;
