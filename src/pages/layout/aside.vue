@@ -92,6 +92,7 @@
         :key="index"
         class="content_4_item"
         :class="{ ischeck: item.istrue }"
+        @click="goToPages(item)"
       >
         {{ item.txt }}
       </div>
@@ -393,6 +394,28 @@ export default class Aside extends Vue {
         this.$store.commit("toChangeTabBarStatus", 12);
         break;
     }
+  }
+  goToPages(item:any){
+    console.log(item)
+    switch (item.id) {
+      case 1:
+        this.$router.push('/login')
+        break;
+    case 2:
+       this.$router.push('/register')
+        break;
+        case 3:
+        this.$router.push('/club')
+        break;
+    }
+    this.countArr.forEach(val=>{
+      val.istrue = false
+      if(val.id == item.id){
+        val.istrue = true
+      }else{
+        val.istrue = false
+      }
+    })
   }
 }
 </script>
