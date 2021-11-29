@@ -151,3 +151,39 @@ console.lgo('获取全局环境变量',process.env)
 "dev": "vue-cli-service serve --mode prod",
 
 ```
+### 十一、安装vuex-class
+```js
+// npm install --save vuex-class
+import {
+  State,
+  Getter,
+  Action,
+  Mutation,
+  namespace
+} from 'vuex-class'
+const someModule = namespace('path/to/module')
+export class MyComp extends Vue {
+  @State('foo') stateFoo
+  @State(state => state.bar) stateBar
+  @Getter('foo') getterFoo
+  @Action('foo') actionFoo
+  @Mutation('foo') mutationFoo
+  @someModule.Getter('foo') moduleGetterFoo
+ 
+  // If the argument is omitted, use the property name
+  // for each state/getter/action/mutation type
+  @State foo
+  @Getter bar
+  @Action baz
+  @Mutation qux
+ 
+  created () {
+    this.stateFoo // -> store.state.foo
+    this.stateBar // -> store.state.bar
+    this.getterFoo // -> store.getters.foo
+    this.actionFoo({ value: true }) // -> store.dispatch('foo', { value: true })
+    this.mutationFoo({ value: true }) // -> store.commit('foo', { value: true })
+    this.moduleGetterFoo // -> store.getters['path/to/module/foo']
+  }
+}
+```

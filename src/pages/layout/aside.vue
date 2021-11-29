@@ -206,15 +206,16 @@
     11==>关于星巴克
     12==>帮助
 */
-import { mapState } from "vuex";
 import { Component, Vue } from "vue-property-decorator";
-
+import { 
+  // Getter, 
+  // Mutation,
+  State 
+  } from 'vuex-class'
 @Component({
-  computed: {
-    ...mapState(["tabBarStatus"]),
-  },
 })
 export default class Aside extends Vue {
+  @State('tabBarStatus') tabBarStatus:any;
   locationKeyWord: string = "";
   aboutArr: any[] = [
     { id: 1, txt: "星巴克在中国", istrue: true },
