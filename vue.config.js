@@ -25,7 +25,7 @@ module.exports = {
 
 
   chainWebpack: config => {
-    config.resolve.symlinks(true); // 修复热更新失效
+    config.resolve.symlinks(true) // 修复热更新失效
     config.optimization.splitChunks({ // 开启代码分割
       chunks: 'all',  //async异步代码分割 initial同步代码分割 all同步异步分割都开启
       minSize: 30000,   //字节 引入的文件大于30kb才进行分割

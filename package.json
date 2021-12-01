@@ -7,9 +7,7 @@
     "dev": "vue-cli-service serve --mode dev",
     "test": "vue-cli-service serve --mode test ",
     "prod": "vue-cli-service serve --mode prod ",
-    "build": "vue-cli-service build",
-    "lint": "eslint . --fix",
-    "lint:create": "eslint --init" 
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "axios": "^0.24.0",

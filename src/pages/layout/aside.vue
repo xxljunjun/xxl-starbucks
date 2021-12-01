@@ -304,7 +304,7 @@ export default class Aside extends Vue {
   showMume() {
     console.log('显示')
     if (this.tabBarStatus == 1) {
-      this.changeStatusFalse();
+      this.changeStatusFalse()
     } else {
       this.changeStatusTrue()
     }
@@ -329,7 +329,7 @@ export default class Aside extends Vue {
     switch (item.id) {
       case 1:
         this.$router.push('/map')
-        this.$store.commit('toChangeTabBarStatus', 6);
+        this.$store.commit('toChangeTabBarStatus', 6)
         break
       case 2:
         this.$router.push('/login')

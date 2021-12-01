@@ -8,7 +8,7 @@ export function getWeather(params) {
 
 export function testmock() {
 	return request({
-		url: `/user/list`,
+		url: '/user/list',
 		method: 'get'
 	})
 }

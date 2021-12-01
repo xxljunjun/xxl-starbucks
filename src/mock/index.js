@@ -1,6 +1,6 @@
-const Mock = require('mockjs');
-const mockFiles = require.context('./modules', false, /\.js$/);
-let mocks = [];
+const Mock = require('mockjs')
+const mockFiles = require.context('./modules', false, /\.js$/)
+let mocks = []
 
 mockFiles.keys().forEach(key => {
   mocks.push(...mockFiles(key))
