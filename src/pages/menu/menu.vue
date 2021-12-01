@@ -1,18 +1,13 @@
 <template>
-    <div>
-        4444444444
-    </div>
+  <div>
+    4444444444
+  </div>
 </template>
 
-<script lang='ts'>
-import { Component, Vue } from "vue-property-decorator";
-@Component({
-})
-export default class App extends Vue {
-
-}
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator"
+@Component({})
+export default class App extends Vue {}
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

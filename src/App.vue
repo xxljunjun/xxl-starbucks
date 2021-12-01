@@ -11,12 +11,12 @@ import LayOut from "@/pages/layout/index.vue";
   components: {
     LayOut,
   },
-  filters:{},
-  directives:{},
-  mixins:[],
+  // filters:{},
+  // directives:{},
+  // mixins:[],
   // beforeRouteEnter(to:any, from:any, next:any) {
   //   // 在渲染该组件的对应路由被 confirm 前调用
-  //   // 不！能！获取组件实例 `this`
+  //   // 不!能!获取组件实例 `this`
   //   // 因为当守卫执行前，组件实例还没被创建
   // },
   // beforeRouteUpdate(to:any, from:any, next:any) {
@@ -31,21 +31,21 @@ import LayOut from "@/pages/layout/index.vue";
   // },
 })
 export default class App extends Vue {
-  beforeCreate() {}
-  created() {}
-  beforeMount() {}
-  mounted() {}
-  beforeUpdate() {}
-  updated() {}
-  beforeDestroy() {}
-  destroyed() {}
-  activated() {}
-  deactivated() {}
-  errorCaptured(err: any, vm: any, info: any) {
-    console.log(err);
-    console.log(vm);
-    console.log(info);
-  }
+  // beforeCreate() {}
+  // created() {}
+  // beforeMount() {}
+  // mounted() {}
+  // beforeUpdate() {}
+  // updated() {}
+  // beforeDestroy() {}
+  // destroyed() {}
+  // activated() {}
+  // deactivated() {}
+  // errorCaptured(err: any, vm: any, info: any) {
+  //   console.log(err);
+  //   console.log(vm);
+  //   console.log(info);
+  // }
 }
 </script>
 

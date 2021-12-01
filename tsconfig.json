@@ -1,33 +1,32 @@
 {
   "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
+    "target": "esnext", // 编译的目标是什么版本的
+    "module": "esnext", // 指定生成哪个模块系统代码
     "strict": true,
     "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
-    "allowJs": true,
+    "allowJs": true, // 允许编译javascript文件。
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
+    "sourceMap": true, // 是否生成map文件
     "baseUrl": ".",
-    "types": [
-      "webpack-env"
-    ],
+    "types": ["webpack-env"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      // 指定模块的路径，和baseUrl有关联，和webpack中resolve.alias配置一样
+      "@/*": ["src/*"]
     },
     "lib": [
+      // 编译过程中需要引入的库文件的列表
       "esnext",
       "dom",
       "dom.iterable",
       "scripthost"
     ]
   },
+  // 指定一个匹配列表（属于自动指定该路径下的所有ts相关文件）
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
@@ -35,7 +34,8 @@
     "tests/**/*.ts",
     "tests/**/*.tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  // 指定一个排除列表（include的反向操作）
+  "exclude": ["node_modules"]
+  // 指定哪些文件使用该配置（属于手动一个个指定文件）
+  // "files": []
 }

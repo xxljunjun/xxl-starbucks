@@ -3,20 +3,22 @@
     <div class="xxl_aside">
       <Aside />
     </div>
+
+
     <div class="xxl_main">
       <router-view></router-view>
     </div>
   </div>
 </template>
 
-<script lang='ts'>
-import { Component, Vue } from "vue-property-decorator";
-import Aside from "@/pages/layout/aside.vue";
-import { getWeather, testmock } from "@/api/home/index";
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import Aside from '@/pages/layout/aside.vue'
+import { getWeather, testmock } from '@/api/home/index'
 @Component({
   components: {
-    Aside,
-  },
+    Aside
+  }
 })
 export default class Help extends Vue {
   mounted() {
@@ -25,17 +27,17 @@ export default class Help extends Vue {
   }
   toGetWeather() {
     let params = {
-      city: "深圳",
-      appkey: "7a85fc9df58cd155f764e033a257d879",
-    };
-    getWeather(params).then((res) => {
-      console.log("获取天气", res);
-    });
+      city: '深圳',
+      appkey: "7a85fc9df58cd155f764e033a257d879"
+    }
+    getWeather(params).then(res => {
+      console.log('获取天气', res)
+    })
   }
   toTestmock() {
-    testmock().then((res) => {
-      console.log("测试mock接口", res);
-    });
+    testmock().then(res => {
+      console.log('测试mock接口', res)
+    })
   }
 }
 </script>

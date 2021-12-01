@@ -187,3 +187,109 @@ export class MyComp extends Vue {
   }
 }
 ```
+### 十一、eslint+prettier格式化代码
++  安装vscode插件 
+```
+Eslint、vuter、prettier-code
+
+```
++ 安装npm的其他插件
+```
+
+```
++ 配置首选项==>设置==>setting.json
+```json
+{
+    // 控制工作台中活动栏的可见性。
+    "workbench.activityBar.visible": true,
+    //主题设置
+    // "workbench.colorTheme": "Monokai",
+    // 默认编辑器字号
+    "editor.fontSize": 14,
+    //是否自动换行
+    // "editor.wordWrap": "on",
+    // "workbench.editor.enablePreview": false, //打开文件不覆盖
+    // "search.followSymlinks": false, //关闭rg.exe进程
+    // "editor.minimap.enabled": false, //关闭迷你图快速预览
+    // "files.autoSave": "onWindowChange", // 切换窗口时自动保存。
+    // "editor.lineNumbers": "on", //开启行数提示
+    // "editor.quickSuggestions": {
+        //开启自动显示建议
+        // "other": true,
+        // "comments": true,
+        // "strings": true
+    // },
+    // "editor.tabSize": 2, //制表符符号eslint
+    //.vue文件template格式化支持，并使用js-beautify-html插件
+    "vetur.format.defaultFormatter.html": "js-beautify-html",
+    //js-beautify-html格式化配置，属性强制换行
+    "vetur.format.defaultFormatterOptions": {
+        "js-beautify-html": {
+            "wrap_attributes": "force-aligned"
+        }
+    },
+    //根据文件后缀名定义vue文件类型
+    "files.associations": {
+        "*.vue": "vue"
+    },
+    //配置 ESLint 检查的文件类型
+    "eslint.validate": [
+        "javascript",
+        "javascriptreact",
+        "html",
+        "vue"
+    ],
+    //保存时eslint自动修复错误
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+    //保存自动格式化
+    "editor.formatOnSave": true,
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[vue]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
+
+```
++ 配置eslint的其他文件
+```js
+
+// .eslintignore
+  node_modules
+  dist/
+  test
+  build/
+
+// .eslintrc.js
+module.exports = {
+    root: true,
+    env: {
+        node: true
+    },
+    extends: ['plugin:vue/essential', 'eslint:recommended'],
+    rules: {
+        'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+        //强制使用单引号
+        quotes: ['error', 'single'],
+        //强制不使用分号结尾
+        semi: ['error', 'never']
+    },
+    parserOptions: {
+        parser: 'babel-eslint',
+        ecmaFeatures: {
+            "legacyDecorators": true
+          }
+    }
+}
+
+// .prettierrc
+{
+	"eslintIntegration": true, // #让prettier使用eslint的代码格式进行校验 
+	"singleQuote": true, //单引号包含字符串
+	"semi": true	//不添加末尾分号
+ }
+```

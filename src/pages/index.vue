@@ -75,93 +75,93 @@
 </template>
 
 <script lang='ts'>
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from 'vue-property-decorator'
 @Component({
   components: {},
   beforeRouteLeave(to: any, from: any, next: any) {
-    console.log("beforeRouteLeave");
-    next();
+    console.log('beforeRouteLeave')
+    next()
   },
   beforeRouteEnter(to: any, from: any, next: any) {
-    console.log("beforeRouteEnter");
-    next();
+    console.log('beforeRouteEnter')
+    next()
   },
 })
 export default class Home extends Vue {
   imgArr: any[] = [
-    { id: 1, path: require("@/static/home/banner_1.jpg") },
-    { id: 2, path: require("@/static/home/banner_2.jpg") },
-    { id: 3, path: require("@/static/home/banner_3.jpg") },
+    { id: 1, path: require('@/static/home/banner_1.jpg') },
+    { id: 2, path: require('@/static/home/banner_2.jpg') },
+    { id: 3, path: require('@/static/home/banner_3.jpg') },
   ];
   box_Arr: any[] = [
     {
       id: 1,
-      path: require("@/static/home/top_1.png"),
-      title: "会员星礼包",
-      txt: "用一份心礼，让心意相随",
+      path: require('@/static/home/top_1.png'),
+      title: '会员星礼包',
+      txt: '用一份心礼，让心意相随',
     },
     {
       id: 2,
-      path: require("@/static/home/top_2.png"),
-      title: "会员星礼包",
-      txt: "用一份心礼，让心意相随",
+      path: require('@/static/home/top_2.png'),
+      title: '会员星礼包',
+      txt: '用一份心礼，让心意相随',
     },
     {
       id: 3,
-      path: require("@/static/home/top_3.png"),
-      title: "会员星礼包",
-      txt: "用一份心礼，让心意相随",
+      path: require('@/static/home/top_3.png'),
+      title: '会员星礼包',
+      txt: '用一份心礼，让心意相随',
     },
     {
       id: 4,
-      path: require("@/static/home/top_4.png"),
-      title: "会员星礼包",
-      txt: "用一份心礼，让心意相随",
+      path: require('@/static/home/top_4.png'),
+      title: '会员星礼包',
+      txt: '用一份心礼，让心意相随',
     },
   ];
   last_Arr: any[] = [
     {
       id: 1,
-      path: require("@/static/home/banner_1.jpg"),
-      title: "咖啡的起源与培植",
-      txt: "咖啡知识",
+      path: require('@/static/home/banner_1.jpg'),
+      title: '咖啡的起源与培植',
+      txt: '咖啡知识',
     },
     {
       id: 2,
-      path: require("@/static/home/banner_1.jpg"),
-      title: "咖啡调制",
-      txt: "咖啡品鉴",
+      path: require('@/static/home/banner_1.jpg'),
+      title: '咖啡调制',
+      txt: '咖啡品鉴',
     },
     {
       id: 3,
-      path: require("@/static/home/banner_1.jpg"),
-      title: "手冲咖啡",
-      txt: "咖啡知识",
+      path: require('@/static/home/banner_1.jpg'),
+      title: '手冲咖啡',
+      txt: '咖啡知识',
     },
     {
       id: 4,
-      path: require("@/static/home/banner_1.jpg"),
-      title: "咖啡的起源与培植",
-      txt: "咖啡品鉴",
+      path: require('@/static/home/banner_1.jpg'),
+      title: '咖啡的起源与培植',
+      txt: '咖啡品鉴',
     },
   ];
   goToOtherPage(item:any) {
-    console.log(item);
-    window.open("http://localhost:8080/home");
+    console.log(item)
+    window.open('http://localhost:8080/home')
   }
   goToRegister() {
-    console.log("去注册");
-    this.$router.push("/register");
-    this.$store.commit("toChangeTabBarStatus", 4);
+    console.log('去注册')
+    this.$router.push('/register')
+    this.$store.commit('toChangeTabBarStatus', 4)
   }
   goToLogin() {
-    console.log("去登录");
-    this.$router.push("/login");
-    this.$store.commit("toChangeTabBarStatus", 4);
+    console.log('去登录')
+    this.$router.push('/login')
+    this.$store.commit('toChangeTabBarStatus', 4)
   }
   goToClub() {
-    this.$router.push("/club");
-    this.$store.commit("toChangeTabBarStatus", 4);
+    this.$router.push('/club')
+    this.$store.commit('toChangeTabBarStatus', 4)
   }
 }
 </script>
