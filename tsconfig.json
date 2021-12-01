@@ -32,7 +32,7 @@
     "src/**/*.tsx",
     "src/**/*.vue",
     "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "tests/**/*.tsx",
   ],
   // 指定一个排除列表（include的反向操作）
   "exclude": ["node_modules"]

@@ -1,0 +1,5 @@
+{
+    "eslintIntegration": false, // #让prettier使用eslint的代码格式进行校验 
+    "singleQuote": true, //单引号包含字符串
+    "semi": false	//不添加末尾分号
+}

@@ -285,8 +285,8 @@ export default class Aside extends Vue {
     { id: 3, txt: '菜单' }
   ]
   list_2: any[] = [
-    { id: 1, txt: '星巴克移动应用' },
-    { id: 2, txt: '星礼卡' },
+    {  id: 1, txt: '星巴克移动应用'},
+    { id: 2, txt: '星礼卡'},
     { id: 3, txt: '星巴克臻选™' },
     { id: 4, txt: '啡快™ － 在线点 到店取' },
     { id: 5, txt: '专星送™' },
