@@ -49,14 +49,14 @@ export default class Help extends Vue {
   display: flex;
   .xxl_aside {
     position: fixed;
-    width: 450px;
+    width: 580px;
     float: left;
     height: 100%;
     // overflow: auto;
     // overflow: hidden;
   }
   .xxl_main {
-    margin-left: 450px;
+    margin-left: 580px;
     flex: 1;
     overflow-x: hidden;
   }

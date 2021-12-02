@@ -111,9 +111,13 @@
       </div>
     </div>
     <div class="content_6" v-if="tabBarStatus == 6">
+       
       <div class="location">
+        <div class="location_box">
+          <ChooseLocation :selectBoxStatus.sync="selectBoxStatus"/>
+        </div>
         <img src="@/assets/svg/icon-account.svg" alt="" class="location_img" />
-        <span class="local_txt">广东 深圳</span>
+        <span class="local_txt"  @click.stop="selectLocation">广东 深圳</span>
         <img src="@/assets/svg/icon-account.svg" alt="" class="arrow_img" />
       </div>
       <div class="inp_box">
@@ -210,15 +214,21 @@
     12==>帮助
 */
 import { Component, Vue } from 'vue-property-decorator'
+import ChooseLocation from '@/components/chooseLocation.vue'
 import {
   // Getter,
   // Mutation,
   State
 } from 'vuex-class'
-@Component({})
+@Component({
+  components:{
+    ChooseLocation
+  }
+})
 export default class Aside extends Vue {
   @State('tabBarStatus') tabBarStatus: any
   locationKeyWord: string = ''
+  selectBoxStatus:boolean = false
   aboutArr: any[] = [
     { id: 1, txt: '星巴克在中国', istrue: true },
     { id: 2, txt: '合作机会', istrue: false },
@@ -295,6 +305,12 @@ export default class Aside extends Vue {
     { id: 8, txt: '关于星巴克' },
     { id: 9, txt: '帮助中心' }
   ]
+  mounted(){
+    window.addEventListener('click',this.closeLocation)
+  }
+  closeLocation(){
+    this.selectBoxStatus = false
+  }
   changeStatusTrue() {
     this.$store.commit('toChangeTabBarStatus', 1)
   }
@@ -423,6 +439,9 @@ export default class Aside extends Vue {
       }
     })
   }
+  selectLocation(){
+    this.selectBoxStatus = !this.selectBoxStatus
+  }
 }
 </script>
 
@@ -449,7 +468,7 @@ export default class Aside extends Vue {
 
 .aside_box {
   color: #000;
-  width: 450px;
+  width: 580px;
   height: 100%;
   // border-right: 1px solid #ccc;
   padding-top: 30px;
@@ -458,7 +477,7 @@ export default class Aside extends Vue {
   .tab_Bar {
     // margin-top: 30px;
     height: 50px;
-    width: 450px;
+    width: 580px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -588,6 +607,7 @@ export default class Aside extends Vue {
     overflow: auto;
     .location {
       padding-left: 30px;
+      position: relative;
       cursor: pointer;
       .location_img {
         height: 18px;
@@ -601,6 +621,11 @@ export default class Aside extends Vue {
         margin-left: 5px;
         width: 6px;
         height: 6px;
+      }
+      .location_box{
+        position: absolute;
+        bottom: -10px;
+        z-index: 99;
       }
     }
     .inp_box {

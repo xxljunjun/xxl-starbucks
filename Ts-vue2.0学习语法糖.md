@@ -62,6 +62,9 @@ export default class App extends Vue {
 @Prop
 /*
 export default class PropComponent extends Vue {
+   @Prop() option?: Object;
+    @Prop() option: Object | undefined | null;
+   @Prop() propA:string
    @Prop(String) readonly name!: string | undefined;
    @Prop({ default: 30, type: Number }) private age!: number;
    @Prop([String, Boolean]) private sex!: string | boolean;
