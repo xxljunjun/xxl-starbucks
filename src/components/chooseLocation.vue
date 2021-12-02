@@ -4,7 +4,7 @@
         <div class="local" @click="selectlocation">广州 深圳 福田</div>
         <p class="select_local">
             <span>选择其他 </span>
-            <span>省份 </span>
+            <span :class="step ==1?'activity':'btns'">省份 </span>
             <span>> </span>
             <span>城市 </span>
             <span>> </span>
@@ -28,6 +28,7 @@ import { Component, Vue,Prop,Watch } from "vue-property-decorator"
 @Component({
 })
 export default class App extends Vue {
+    step:number = 1
     status:Boolean=false
     countryList:Array<any>= [
         {id:1,txt:"A-G",local:["北京","安徽","福建","广东","重庆","福建"]},
@@ -87,6 +88,15 @@ export default class App extends Vue {
         font-size: 12px;
         color: rgba(0, 0, 0, 0.56);
         margin: 15px 0 15px 0 ;
+        .btns{
+            display: inline-block;
+            color: #fff;
+        }
+        .activity{
+             display: inline-block;
+            color: #00A862;
+            
+        }
     }
     .local_name{
         font-size: 14px;
