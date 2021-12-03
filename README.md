@@ -107,6 +107,7 @@ app.$mount()
 ### 六、安装基于vue的地图插件
 ```
 //暂时不支持typescript
+    ==>可以使用声明文件解决
 npm install vue-amap --save
 ```
 ### 七、集成typescript

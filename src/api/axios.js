@@ -4,11 +4,11 @@ import axios from 'axios'//它是一个HTTP工具，用于与后端进行数据�
 //生产环境
 //测试环境
 //开发环境
-const baseURL = 'http://localhost:8090'//要是跨域的话，就请求本地服务器跳转到vue.config.js解决跨域问题
+// const baseURL = 'http://localhost:8090'//要是跨域的话，就请求本地服务器跳转到vue.config.js解决跨域问题
 
 //c创建一个axios实例
 const instance = axios.create({
-    baseURL,
+    // baseURL,
     timeout: 7000,
     headers: {}
 })
@@ -36,7 +36,7 @@ instance.interceptors.response.use(function (res) {
     } else {
         console.log('调接口失败')
     }
-    return res
+    return res.data
 }, function (error) {
     return Promise.reject(error)
 })

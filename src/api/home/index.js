@@ -12,3 +12,24 @@ export function testmock() {
 		method: 'get'
 	})
 }
+
+export function getProvince() {
+	return request({
+		url: '/location/province',
+		method: 'get'
+	})
+}
+
+export function getCityList() {
+	return request({
+		url: '/location/city',
+		method: 'get'
+	})
+}
+
+export function getCountylist() {
+	return request({
+		url: '/location/county',
+		method: 'get'
+	})
+}
